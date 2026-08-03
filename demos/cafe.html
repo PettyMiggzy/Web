@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bloom &amp; Bean — Neighborhood Café (Demo)</title>
+  <meta name="description" content="Demo café website by Northlight Studio — Bloom & Bean, a cozy neighborhood coffee shop with menu and online ordering." />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{ --cream:#faf6ef; --espresso:#2b1d14; --terra:#c8622d; --sage:#6f7d5f; --muted:#7a6a5c; --line:#e8ded0; }
+    *{box-sizing:border-box;margin:0} html{scroll-behavior:smooth}
+    body{font-family:"Inter",sans-serif;color:var(--espresso);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block} a{color:inherit;text-decoration:none} ul{list-style:none;padding:0}
+    h1,h2,h3{font-family:"Playfair Display",serif;font-weight:600;line-height:1.08;letter-spacing:-.01em}
+    .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2rem)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.6rem;border-radius:999px;font-weight:600;font-size:.95rem;transition:.25s}
+    .btn-primary{background:var(--terra);color:#fff} .btn-primary:hover{background:#a94f22}
+    .btn-ghost{border:1.5px solid var(--espresso);color:var(--espresso)} .btn-ghost:hover{background:var(--espresso);color:var(--cream)}
+    /* demo banner */
+    .demo-bar{background:var(--espresso);color:#f4e9dc;font-size:.82rem;text-align:center;padding:.55rem 1rem}
+    .demo-bar a{color:#f0b892;font-weight:600}
+    /* header */
+    header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0}
+    .logo{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+    .logo .b{width:34px;height:34px;border-radius:50%;background:var(--terra);color:#fff;display:grid;place-items:center;font-size:1rem}
+    .nav-links{display:flex;gap:2rem;font-size:.95rem;font-weight:500}
+    .nav-links a:hover{color:var(--terra)}
+    @media(max-width:760px){.nav-links{display:none}}
+    /* hero */
+    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding:clamp(3rem,5vw,6rem) 0}
+    .hero .eyebrow{color:var(--terra);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
+    .hero h1{font-size:clamp(2.6rem,1.6rem+3.6vw,4.6rem);margin:1rem 0}
+    .hero p{font-size:1.15rem;color:var(--muted);max-width:46ch}
+    .hero-cta{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+    .hero-img{aspect-ratio:4/5;border-radius:24px;background:linear-gradient(160deg,#e8c9a0,#c8622d 60%,#8a3f1c);box-shadow:0 30px 60px -30px rgba(43,29,20,.5);position:relative;overflow:hidden}
+    .hero-img::after{content:"☕";position:absolute;inset:0;display:grid;place-items:center;font-size:7rem;opacity:.85}
+    @media(max-width:760px){.hero{grid-template-columns:1fr}.hero-img{order:-1;aspect-ratio:16/12}}
+    /* strip */
+    .strip{background:var(--espresso);color:var(--cream);text-align:center;padding:1.1rem}
+    .strip span{margin:0 1.2rem;font-size:.95rem;opacity:.9}
+    /* sections */
+    section{padding:clamp(3.5rem,4vw,6rem) 0}
+    .sec-head{text-align:center;max-width:640px;margin:0 auto 3rem}
+    .sec-head .eyebrow{color:var(--terra);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
+    .sec-head h2{font-size:clamp(2rem,1.4rem+2vw,3rem);margin:.6rem 0}
+    .sec-head p{color:var(--muted)}
+    /* menu */
+    .menu{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 4rem}
+    @media(max-width:760px){.menu{grid-template-columns:1fr}}
+    .menu-item{display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px dashed var(--line)}
+    .menu-item .name{font-weight:600} .menu-item .desc{color:var(--muted);font-size:.9rem}
+    .menu-item .price{font-family:"Playfair Display",serif;font-size:1.2rem;color:var(--terra)}
+    /* features */
+    .feat{background:#fff;border-radius:20px;padding:2rem;border:1px solid var(--line)}
+    .feat .ic{font-size:1.8rem} .feat h3{font-size:1.3rem;margin:.8rem 0 .4rem} .feat p{color:var(--muted);font-size:.95rem}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+    @media(max-width:760px){.grid3{grid-template-columns:1fr}}
+    /* visit */
+    .visit{background:#fff;border-radius:28px;border:1px solid var(--line);padding:clamp(2rem,3vw,3.5rem);display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+    @media(max-width:760px){.visit{grid-template-columns:1fr}}
+    .visit h2{font-size:2.2rem;margin-bottom:1rem}
+    .hours{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+    .map{aspect-ratio:16/11;border-radius:18px;background:linear-gradient(160deg,#6f7d5f,#4a5540);position:relative}
+    .map::after{content:"📍";position:absolute;inset:0;display:grid;place-items:center;font-size:3rem}
+    footer{background:var(--espresso);color:#e9dccd;padding:3rem 0 2rem;text-align:center}
+    footer .logo{justify-content:center;color:#fff;margin-bottom:1rem}
+    footer .socials{margin:1.2rem 0;font-size:.95rem} footer .socials a{margin:0 .8rem}
+    footer .fine{font-size:.8rem;opacity:.6;margin-top:1rem}
+  </style>
+</head>
+<body>
+  <div class="demo-bar">◈ Demo concept by <strong>Northlight Studio</strong> — like this style for your business? <a href="../index.html">Get your own →</a></div>
+
+  <header>
+    <div class="wrap"><nav>
+      <a href="#" class="logo"><span class="b">B</span> Bloom &amp; Bean</a>
+      <div class="nav-links"><a href="#menu">Menu</a><a href="#why">Our Story</a><a href="#visit">Visit</a><a href="#visit">Order Online</a></div>
+      <a href="#visit" class="btn btn-primary">Order Now</a>
+    </nav></div>
+  </header>
+
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <span class="eyebrow">Est. 2019 · Small-batch roasters</span>
+        <h1>Your cozy corner for really good coffee.</h1>
+        <p>Locally roasted beans, fresh-baked pastries, and a warm spot to slow down. Order ahead and skip the line.</p>
+        <div class="hero-cta">
+          <a href="#visit" class="btn btn-primary">Order online ☕</a>
+          <a href="#menu" class="btn btn-ghost">See the menu</a>
+        </div>
+      </div>
+      <div class="hero-img"></div>
+    </div>
+  </div>
+
+  <div class="strip"><div class="wrap"><span>✦ Free Wi-Fi</span><span>✦ Oat, almond &amp; soy milk</span><span>✦ Dog-friendly patio</span><span>✦ Open 7 days</span></div></div>
+
+  <section id="menu">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">The Menu</span><h2>Made fresh, all day</h2><p>A few favorites from our full menu.</p></div>
+      <div class="menu">
+        <div class="menu-item"><div><div class="name">Signature Latte</div><div class="desc">House espresso, silky steamed milk</div></div><div class="price">$4.75</div></div>
+        <div class="menu-item"><div><div class="name">Cold Brew</div><div class="desc">Steeped 18 hours, smooth &amp; bold</div></div><div class="price">$4.50</div></div>
+        <div class="menu-item"><div><div class="name">Maple Oat Cortado</div><div class="desc">Our best-seller, naturally sweet</div></div><div class="price">$5.25</div></div>
+        <div class="menu-item"><div><div class="name">Matcha Bloom</div><div class="desc">Ceremonial matcha, honey, oat milk</div></div><div class="price">$5.50</div></div>
+        <div class="menu-item"><div><div class="name">Almond Croissant</div><div class="desc">Baked in-house every morning</div></div><div class="price">$4.25</div></div>
+        <div class="menu-item"><div><div class="name">Avocado Toast</div><div class="desc">Sourdough, chili flakes, sea salt</div></div><div class="price">$8.50</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="background:#fff;border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Why Bloom &amp; Bean</span><h2>More than a coffee shop</h2></div>
+      <div class="grid3">
+        <div class="feat"><div class="ic">🌱</div><h3>Ethically sourced</h3><p>Direct-trade beans from farms we know by name, roasted weekly in small batches.</p></div>
+        <div class="feat"><div class="ic">🥐</div><h3>Baked in-house</h3><p>Our pastry chef is in before sunrise so everything on the shelf is made that morning.</p></div>
+        <div class="feat"><div class="ic">💛</div><h3>A neighborhood spot</h3><p>Comfy seats, friendly faces, and the kind of place you actually want to stay a while.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <div class="visit">
+        <div>
+          <span class="eyebrow" style="color:var(--terra);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem">Visit us</span>
+          <h2>Come say hi</h2>
+          <p style="color:var(--muted);margin-bottom:1.4rem">124 Maple Street, Riverside · (555) 019-2837</p>
+          <div class="hours"><span>Mon – Fri</span><strong>6:30am – 6:00pm</strong></div>
+          <div class="hours"><span>Saturday</span><strong>7:00am – 7:00pm</strong></div>
+          <div class="hours"><span>Sunday</span><strong>7:00am – 4:00pm</strong></div>
+          <a href="#" class="btn btn-primary" style="margin-top:1.6rem">Order ahead ☕</a>
+        </div>
+        <div class="map"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="logo"><span class="b">B</span> Bloom &amp; Bean</div>
+      <p style="opacity:.8">Locally roasted. Freshly baked. Always warm.</p>
+      <div class="socials"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">Order Online</a></div>
+      <p class="fine">Demo concept site built by Northlight Studio · <a href="../index.html" style="color:#f0b892">northlight.studio</a></p>
+    </div>
+  </footer>
+</body>
+</html>
