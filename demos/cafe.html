@@ -5,31 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bloom &amp; Bean — Neighborhood Café (Demo)</title>
   <meta name="description" content="Demo café website by Northlight Studio — Bloom & Bean, a cozy neighborhood coffee shop with menu and online ordering." />
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <meta name="robots" content="noindex" />
+  <meta property="og:title" content="Bloom &amp; Bean — demo by Northlight Studio" />
+  <meta property="og:description" content="Bloom &amp; Bean is a fictional neighborhood café — a portfolio demo concept designed &amp; built by Northlight Studio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://northlight.studio/assets/og-image.png" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root{ --cream:#faf6ef; --espresso:#2b1d14; --terra:#c8622d; --sage:#6f7d5f; --muted:#7a6a5c; --line:#e8ded0; }
+    :root{ --cream:#faf6ef; --espresso:#2b1d14; --terra:#a84a1e; --sage:#6f7d5f; --muted:#7a6a5c; --line:#e8ded0; --barh:38px }
+    @media(max-width:577px){:root{--barh:57px}} /* demo bar wraps to two lines below ~561px */
     *{box-sizing:border-box;margin:0} html{scroll-behavior:smooth}
     body{font-family:"Inter",sans-serif;color:var(--espresso);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased}
     img{max-width:100%;display:block} a{color:inherit;text-decoration:none} ul{list-style:none;padding:0}
     h1,h2,h3{font-family:"Playfair Display",serif;font-weight:600;line-height:1.08;letter-spacing:-.01em}
     .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2rem)}
+    [id]{scroll-margin-top:calc(var(--barh) + 88px)}
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.6rem;border-radius:999px;font-weight:600;font-size:.95rem;transition:.25s}
     .btn-primary{background:var(--terra);color:#fff} .btn-primary:hover{background:#a94f22}
     .btn-ghost{border:1.5px solid var(--espresso);color:var(--espresso)} .btn-ghost:hover{background:var(--espresso);color:var(--cream)}
-    /* demo banner */
-    .demo-bar{background:var(--espresso);color:#f4e9dc;font-size:.82rem;text-align:center;padding:.55rem 1rem}
-    .demo-bar a{color:#f0b892;font-weight:600}
-    /* header */
-    header{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    /* demo banner — sticky above everything */
+    .demo-bar{position:sticky;top:0;z-index:60;background:var(--espresso);color:#f4e9dc;font-size:.82rem;line-height:1.5;text-align:center;padding:.55rem 1rem}
+    .demo-bar a{color:#f0b892;font-weight:600;white-space:nowrap}
+    /* header — offset below the sticky demo bar */
+    header{position:sticky;top:var(--barh);z-index:50;background:rgba(250,246,239,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0}
     .logo{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
     .logo .b{width:34px;height:34px;border-radius:50%;background:var(--terra);color:#fff;display:grid;place-items:center;font-size:1rem}
     .nav-links{display:flex;gap:2rem;font-size:.95rem;font-weight:500}
     .nav-links a:hover{color:var(--terra)}
-    @media(max-width:760px){.nav-links{display:none}}
+    /* mobile nav: horizontally scrollable anchor pills */
+    .nav-pills{display:none}
+    @media(max-width:760px){
+      .nav-links{display:none}
+      .nav-pills{display:flex;gap:.5rem;overflow-x:auto;padding:0 0 .85rem;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+      .nav-pills::-webkit-scrollbar{display:none}
+      .nav-pills a{flex:0 0 auto;padding:.4rem .95rem;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:.85rem;font-weight:500;white-space:nowrap}
+      [id]{scroll-margin-top:calc(var(--barh) + 128px)}
+    }
     /* hero */
     .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding:clamp(3rem,5vw,6rem) 0}
     .hero .eyebrow{color:var(--terra);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
@@ -66,21 +82,33 @@
     .hours{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
     .map{aspect-ratio:16/11;border-radius:18px;background:linear-gradient(160deg,#6f7d5f,#4a5540);position:relative}
     .map::after{content:"📍";position:absolute;inset:0;display:grid;place-items:center;font-size:3rem}
+    /* order-ahead sub-block */
+    .order-block{margin-top:1.8rem;background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:1.3rem 1.5rem}
+    .order-block h3{font-size:1.35rem;margin-bottom:.3rem}
+    .order-block p{color:var(--muted);font-size:.92rem}
+    .order-block .call{margin-top:.8rem;color:var(--espresso);font-size:.95rem}
+    .order-block .call a{color:var(--terra);font-weight:600}
     footer{background:var(--espresso);color:#e9dccd;padding:3rem 0 2rem;text-align:center}
     footer .logo{justify-content:center;color:#fff;margin-bottom:1rem}
-    footer .socials{margin:1.2rem 0;font-size:.95rem} footer .socials a{margin:0 .8rem}
+    footer .socials{margin:1.2rem 0;font-size:.95rem} footer .socials a{margin:0 .8rem} footer .socials span{margin:0 .8rem;opacity:.75}
     footer .fine{font-size:.8rem;opacity:.6;margin-top:1rem}
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none !important;animation:none !important}
+      html{scroll-behavior:auto}
+    }
   </style>
 </head>
 <body>
-  <div class="demo-bar">◈ Demo concept by <strong>Northlight Studio</strong> — like this style for your business? <a href="../index.html">Get your own →</a></div>
+  <div class="demo-bar" id="top">◈ Fictional demo business — designed &amp; built by <strong>Northlight Studio</strong> · <a href="/work">← Back to portfolio</a></div>
 
   <header>
     <div class="wrap"><nav>
-      <a href="#" class="logo"><span class="b">B</span> Bloom &amp; Bean</a>
-      <div class="nav-links"><a href="#menu">Menu</a><a href="#why">Our Story</a><a href="#visit">Visit</a><a href="#visit">Order Online</a></div>
-      <a href="#visit" class="btn btn-primary">Order Now</a>
-    </nav></div>
+      <a href="#top" class="logo"><span class="b">B</span> Bloom &amp; Bean</a>
+      <div class="nav-links"><a href="#menu">Menu</a><a href="#why">Our Story</a><a href="#visit">Visit</a><a href="#order">Order Online</a></div>
+      <a href="#order" class="btn btn-primary">Order Now</a>
+    </nav>
+    <div class="nav-pills"><a href="#menu">Menu</a><a href="#why">Our Story</a><a href="#visit">Visit</a><a href="#order">Order Online</a></div>
+    </div>
   </header>
 
   <div class="wrap">
@@ -90,7 +118,7 @@
         <h1>Your cozy corner for really good coffee.</h1>
         <p>Locally roasted beans, fresh-baked pastries, and a warm spot to slow down. Order ahead and skip the line.</p>
         <div class="hero-cta">
-          <a href="#visit" class="btn btn-primary">Order online ☕</a>
+          <a href="#order" class="btn btn-primary">Order online ☕</a>
           <a href="#menu" class="btn btn-ghost">See the menu</a>
         </div>
       </div>
@@ -135,7 +163,13 @@
           <div class="hours"><span>Mon – Fri</span><strong>6:30am – 6:00pm</strong></div>
           <div class="hours"><span>Saturday</span><strong>7:00am – 7:00pm</strong></div>
           <div class="hours"><span>Sunday</span><strong>7:00am – 4:00pm</strong></div>
-          <a href="#" class="btn btn-primary" style="margin-top:1.6rem">Order ahead ☕</a>
+          <a href="#order" class="btn btn-primary" style="margin-top:1.6rem">Order ahead ☕</a>
+          <div class="order-block" id="order">
+            <h3>Order ahead</h3>
+            <p>Call in your order and we'll have it ready at the counter — no line, no wait.</p>
+            <div class="hours"><span>Pickup orders</span><strong>Daily until 30 min before close</strong></div>
+            <p class="call"><a href="tel:+15550192837">☎ (555) 019-2837</a> — call to order</p>
+          </div>
         </div>
         <div class="map"></div>
       </div>
@@ -146,8 +180,8 @@
     <div class="wrap">
       <div class="logo"><span class="b">B</span> Bloom &amp; Bean</div>
       <p style="opacity:.8">Locally roasted. Freshly baked. Always warm.</p>
-      <div class="socials"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">Order Online</a></div>
-      <p class="fine">Demo concept site built by Northlight Studio · <a href="../index.html" style="color:#f0b892">northlight.studio</a></p>
+      <div class="socials"><span>Instagram</span><span>Facebook</span><a href="#order">Order Online</a></div>
+      <p class="fine">Fictional demo site built by Northlight Studio · <a href="/work" style="color:#f0b892">← Back to portfolio</a></p>
     </div>
   </footer>
 </body>

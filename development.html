@@ -5,20 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Development — Northlight Studio | Web apps, mobile apps & custom software</title>
   <meta name="description" content="Beyond websites — we build custom web apps, mobile apps, internal tools, integrations, and automation for growing businesses." />
-  <meta name="keywords" content="web app development, custom software, mobile app development, business automation, software development services" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Northlight Studio" />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="canonical" href="https://northlight.studio/development.html" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0a0a12" />
+  <link rel="canonical" href="https://northlight.studio/development" />
   <meta property="og:title" content="Development — Northlight Studio | Web apps & custom software" />
   <meta property="og:description" content="Custom web apps, mobile apps, internal tools, integrations, and automation for growing businesses." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://northlight.studio/development.html" />
+  <meta property="og:url" content="https://northlight.studio/development" />
   <meta property="og:image" content="https://northlight.studio/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Northlight Studio — premium websites for small business" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Development — Northlight Studio | Web apps & custom software" />
+  <meta name="twitter:description" content="Custom web apps, mobile apps, internal tools, integrations, and automation for growing businesses." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script>document.documentElement.classList.add("js");</script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -35,9 +43,11 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
     <div class="container nav">
-      <a href="index.html" class="brand" aria-label="Northlight Studio — home">
+      <a href="/" class="brand" aria-label="Northlight Studio — home">
         <svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
           <defs><linearGradient id="bm" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#7c6cff"/><stop offset="0.5" stop-color="#9b7bff"/><stop offset="1" stop-color="#37d0e2"/></linearGradient></defs>
           <path d="M32 12 C34 24 40 30 52 32 C40 34 34 40 32 52 C30 40 24 34 12 32 C24 30 30 24 32 12 Z" fill="url(#bm)"/>
@@ -45,26 +55,26 @@
         Northlight
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="index.html">Home</a><a href="services.html">Websites</a><a href="development.html" class="active">Development</a><a href="pricing.html">Pricing</a><a href="work.html">Work</a><a href="about.html">About</a>
+        <a href="/">Home</a><a href="/services">Websites</a><a href="/development" class="active">Development</a><a href="/pricing">Pricing</a><a href="/work">Work</a><a href="/about">About</a>
       </nav>
-      <div class="nav-cta"><a href="contact.html" class="btn btn-ghost">Book a call</a><a href="contact.html" class="btn btn-primary">Start a project</a></div>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="nav-cta"><a href="/contact" class="btn btn-ghost">Book a call</a><a href="/contact" class="btn btn-primary">Start a project</a></div>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
     </div>
-    <div class="mobile-menu">
-      <a href="index.html">Home</a><a href="services.html">Websites</a><a href="development.html">Development</a><a href="pricing.html">Pricing</a><a href="work.html">Work</a><a href="about.html">About</a>
-      <a href="contact.html" class="btn btn-primary btn-lg">Start a project</a>
-    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="/">Home</a><a href="/services">Websites</a><a href="/development">Development</a><a href="/pricing">Pricing</a><a href="/work">Work</a><a href="/about">About</a>
+      <a href="/contact" class="btn btn-primary btn-lg">Start a project</a>
+    </nav>
   </header>
 
-  <main>
+  <main id="main">
     <section class="page-hero">
       <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="container">
         <span class="pill reveal"><span class="dot"></span> Beyond websites — we build software</span>
-        <h1 class="reveal d1">We don't just design sites. <span class="serif-italic gradient-text">We build.</span></h1>
+        <h1 class="reveal d1">We don’t just design sites. <span class="serif-italic gradient-text">We build.</span></h1>
         <p class="lead reveal d2">Need more than a website? We build custom web apps, mobile apps, internal tools, and integrations — the same premium quality, the same fair pricing, from a team that actually writes the code.</p>
         <div class="hero-cta reveal d3">
-          <a href="contact.html" class="btn btn-primary btn-lg">Tell us what you need</a>
+          <a href="/contact" class="btn btn-primary btn-lg">Tell us what you need</a>
           <a href="#capabilities" class="btn btn-ghost btn-lg">See what we build</a>
         </div>
       </div>
@@ -92,7 +102,7 @@
           <article class="card reveal d2">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 20l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg></div>
             <h3>Internal tools</h3>
-            <p>Stop paying for five apps that don't talk. We build the custom tool that runs your operation the way you actually do it.</p>
+            <p>Stop paying for five apps that don’t talk. We build the custom tool that runs your operation the way you actually do it.</p>
           </article>
           <article class="card reveal">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
@@ -107,7 +117,7 @@
           <article class="card reveal d2">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg></div>
             <h3>Custom e-commerce</h3>
-            <p>Stores and checkout flows that do exactly what off-the-shelf platforms can't — subscriptions, bookings, custom pricing.</p>
+            <p>Stores and checkout flows that do exactly what off-the-shelf platforms can’t — subscriptions, bookings, custom pricing.</p>
           </article>
         </div>
       </div>
@@ -121,7 +131,7 @@
             <span class="eyebrow">How we work</span>
             <h2 class="mt-1">Real engineering, minus the agency runaround.</h2>
             <p class="lead mt-1">You get a clear scope, a fixed quote, and steady progress you can see — not a black box and a giant invoice at the end.</p>
-            <a href="contact.html" class="btn btn-primary mt-3">Get a project quote</a>
+            <a href="/contact" class="btn btn-primary mt-3">Get a project quote</a>
           </div>
           <div class="steps reveal d2">
             <div class="step"><div class="step-no"></div><div><h3>Scope &amp; quote</h3><p>We map out what you need and give you a clear, fixed price up front — no open-ended hourly surprises.</p></div></div>
@@ -155,9 +165,9 @@
       <div class="container">
         <div class="cta-band reveal">
           <span class="eyebrow" style="justify-content:center;">Got an idea?</span>
-          <h2 class="mt-1">Let's figure out what to build.</h2>
-          <p class="lead">Tell us the problem you're trying to solve. We'll come back with a plan and a fixed price — free.</p>
-          <div class="hero-cta"><a href="contact.html" class="btn btn-primary btn-lg">Start a project</a><a href="services.html" class="btn btn-ghost btn-lg">Just need a website?</a></div>
+          <h2 class="mt-1">Let’s figure out what to build.</h2>
+          <p class="lead">Tell us the problem you’re trying to solve. We’ll come back with a plan and a fixed price — free.</p>
+          <div class="hero-cta"><a href="/contact" class="btn btn-primary btn-lg">Start a project</a><a href="/services" class="btn btn-ghost btn-lg">Just need a website?</a></div>
         </div>
       </div>
     </section>
@@ -167,24 +177,20 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="index.html" class="brand"><svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 12 C34 24 40 30 52 32 C40 34 34 40 32 52 C30 40 24 34 12 32 C24 30 30 24 32 12 Z" fill="url(#bm)"/></svg> Northlight</a>
+          <a href="/" class="brand"><svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 12 C34 24 40 30 52 32 C40 34 34 40 32 52 C30 40 24 34 12 32 C24 30 30 24 32 12 Z" fill="url(#bm)"/></svg> Northlight</a>
           <p>We design premium websites and build custom software for small businesses. Launched fast. Hosted, maintained, and owned by you.</p>
         </div>
-        <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="work.html">Our work</a><a href="services.html">Websites</a><a href="development.html">Development</a></div>
-        <div class="footer-col"><h4>Plans</h4><a href="pricing.html">Pricing</a><a href="pricing.html">Add-ons</a><a href="pricing.html">One-time build</a><a href="contact.html">Get a quote</a></div>
-        <div class="footer-col"><h4>Get started</h4><a href="contact.html">Book a call</a><a href="contact.html">Start a project</a><a href="mailto:hello@northlight.studio">hello@northlight.studio</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="/about">About</a><a href="/work">Our work</a><a href="/services">Websites</a><a href="/development">Development</a><a href="/contact">Contact</a></div>
+        <div class="footer-col"><h4>Plans</h4><a href="/pricing">Pricing</a><a href="/pricing#addons">Add-ons</a><a href="/pricing#own-it">One-time build</a><a href="/contact">Get a quote</a></div>
+        <div class="footer-col"><h4>Get started</h4><a href="/contact">Book a call</a><a href="/contact">Start a project</a><a href="mailto:hello@northlight.studio">hello@northlight.studio</a></div>
       </div>
       <div class="footer-bottom">
-        <span>© <span id="year"></span> Northlight Studio. All rights reserved.</span>
-        <div class="socials">
-          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 3h-3a4 4 0 00-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9h4v11H4zM6 4a2 2 0 110 4 2 2 0 010-4zM12 9h4v2a3 3 0 013-2c3 0 4 2 4 5v6h-4v-6c0-1-1-2-2-2s-2 1-2 2v6h-4z"/></svg></a>
-        </div>
+        <span>© <span id="year">2026</span> Northlight Studio. All rights reserved.</span>
+        <a class="footer-legal" href="/privacy">Privacy policy</a>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>

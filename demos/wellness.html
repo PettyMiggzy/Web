@@ -5,29 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Still Point Studio — Yoga &amp; Wellness (Demo)</title>
   <meta name="description" content="Demo wellness website by Northlight Studio — Still Point Studio, a calm, elegant yoga studio with class schedules and online booking." />
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <meta name="robots" content="noindex" />
+  <meta property="og:title" content="Still Point Studio — demo by Northlight Studio" />
+  <meta property="og:description" content="Still Point Studio is a fictional yoga &amp; wellness studio — a portfolio demo concept designed &amp; built by Northlight Studio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://northlight.studio/assets/og-image.png" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    :root{--bg:#f3f1ea;--paper:#faf9f5;--sage:#8a9a7b;--sage-d:#5f6f52;--ink:#3a3d36;--muted:#7c7d73;--line:#e2ddd0}
+    :root{--bg:#f3f1ea;--paper:#faf9f5;--sage:#8a9a7b;--sage-d:#5f6f52;--ink:#3a3d36;--muted:#63645b;--line:#e2ddd0;--barh:38px}
+    @media(max-width:557px){:root{--barh:57px}} /* demo bar wraps to two lines below ~541px */
     *{box-sizing:border-box;margin:0} html{scroll-behavior:smooth}
     body{font-family:"Inter",sans-serif;font-weight:300;color:var(--ink);background:var(--bg);line-height:1.75;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none} ul{list-style:none;padding:0} img{max-width:100%;display:block}
     h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:500;line-height:1.1;letter-spacing:.005em}
     .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.3rem,4vw,2rem)}
+    [id]{scroll-margin-top:calc(var(--barh) + 92px)}
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.9rem;border-radius:999px;font-family:"Inter",sans-serif;font-weight:400;font-size:.92rem;letter-spacing:.03em;transition:.3s}
     .btn-sage{background:var(--sage-d);color:#fff} .btn-sage:hover{background:var(--ink)}
     .btn-line{border:1px solid var(--sage-d);color:var(--sage-d)} .btn-line:hover{background:var(--sage-d);color:#fff}
-    .demo-bar{background:var(--ink);color:#e4e2d7;font-size:.82rem;text-align:center;padding:.55rem 1rem}
-    .demo-bar a{color:#b9c7a8;font-weight:500}
-    header{position:sticky;top:0;z-index:50;background:rgba(243,241,234,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    /* demo banner — sticky above everything */
+    .demo-bar{position:sticky;top:0;z-index:60;background:var(--ink);color:#e4e2d7;font-size:.82rem;line-height:1.5;text-align:center;padding:.55rem 1rem}
+    .demo-bar a{color:#b9c7a8;font-weight:500;white-space:nowrap}
+    /* header — offset below the sticky demo bar */
+    header{position:sticky;top:var(--barh);z-index:50;background:rgba(243,241,234,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     nav{display:flex;align-items:center;justify-content:space-between;padding:1.3rem 0}
     .logo{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:600;letter-spacing:.02em;display:flex;align-items:center;gap:.6rem}
     .logo .b{font-size:1.3rem;color:var(--sage-d)}
     .nav-links{display:flex;gap:2.2rem;font-size:.9rem;font-weight:400;letter-spacing:.04em;color:var(--muted)}
     .nav-links a:hover{color:var(--ink)}
-    @media(max-width:760px){.nav-links{display:none}}
+    /* mobile nav: horizontally scrollable anchor pills */
+    .nav-pills{display:none}
+    @media(max-width:760px){
+      .nav-links{display:none}
+      .nav-pills{display:flex;gap:.5rem;overflow-x:auto;padding:0 0 .9rem;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+      .nav-pills::-webkit-scrollbar{display:none}
+      .nav-pills a{flex:0 0 auto;padding:.38rem .95rem;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font-size:.85rem;font-weight:400;letter-spacing:.03em;white-space:nowrap}
+      [id]{scroll-margin-top:calc(var(--barh) + 136px)}
+    }
     /* hero */
     .hero{text-align:center;padding:clamp(4rem,6vw,7rem) 0 clamp(3rem,4vw,5rem)}
     .hero .eyebrow{font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sage);margin-bottom:1.4rem}
@@ -77,20 +95,26 @@
     .cta p{opacity:.92;margin:1rem 0 2rem;font-size:1.1rem}
     footer{padding:3.5rem 0 2rem;text-align:center;color:var(--muted)}
     footer .logo{justify-content:center;margin-bottom:1rem;color:var(--ink)}
-    footer .socials{margin:1.2rem 0;font-size:.9rem;letter-spacing:.05em} footer .socials a{margin:0 .9rem}
+    footer .socials{margin:1.2rem 0;font-size:.9rem;letter-spacing:.05em} footer .socials a{margin:0 .9rem} footer .socials span{margin:0 .9rem;opacity:.85}
     footer .fine{font-size:.8rem;opacity:.8;margin-top:1rem}
     footer .fine a{color:var(--sage-d)}
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none !important;animation:none !important;transform:none !important}
+      html{scroll-behavior:auto}
+    }
   </style>
 </head>
 <body>
-  <div class="demo-bar">◈ Demo concept by <strong>Northlight Studio</strong> — imagine this for your studio. <a href="../index.html">Get your own →</a></div>
+  <div class="demo-bar" id="top">◈ Fictional demo business — designed &amp; built by <strong>Northlight Studio</strong> · <a href="/work">← Back to portfolio</a></div>
 
   <header>
     <div class="wrap"><nav>
-      <a href="#" class="logo"><span class="b">❋</span> Still Point</a>
+      <a href="#top" class="logo"><span class="b">❋</span> Still Point</a>
       <div class="nav-links"><a href="#classes">Classes</a><a href="#schedule">Schedule</a><a href="#pricing">Pricing</a><a href="#visit">Visit</a></div>
       <a href="#pricing" class="btn btn-sage">Book a class</a>
-    </nav></div>
+    </nav>
+    <div class="nav-pills"><a href="#classes">Classes</a><a href="#schedule">Schedule</a><a href="#pricing">Pricing</a><a href="#visit">Visit</a></div>
+    </div>
   </header>
 
   <section class="hero">
@@ -121,11 +145,11 @@
     <div class="wrap">
       <div class="sec-head"><p class="eyebrow">This Week</p><h2>Class schedule</h2></div>
       <div class="sched-list">
-        <div class="slot"><div class="time">7:00a</div><div><div class="cname">Sunrise Gentle Flow</div><div class="teacher">with Amara</div></div><div class="lvl">All levels</div><a href="#" class="btn btn-line">Book</a></div>
-        <div class="slot"><div class="time">9:30a</div><div><div class="cname">Vinyasa Strong</div><div class="teacher">with Jonah</div></div><div class="lvl">Intermediate</div><a href="#" class="btn btn-line">Book</a></div>
-        <div class="slot"><div class="time">12:00p</div><div><div class="cname">Lunch Break Reset</div><div class="teacher">with Priya</div></div><div class="lvl">All levels</div><a href="#" class="btn btn-line">Book</a></div>
-        <div class="slot"><div class="time">5:30p</div><div><div class="cname">Candlelight Restore</div><div class="teacher">with Amara</div></div><div class="lvl">All levels</div><a href="#" class="btn btn-line">Book</a></div>
-        <div class="slot"><div class="time">7:00p</div><div><div class="cname">Breathe &amp; Meditate</div><div class="teacher">with Sam</div></div><div class="lvl">All levels</div><a href="#" class="btn btn-line">Book</a></div>
+        <div class="slot"><div class="time">7:00a</div><div><div class="cname">Sunrise Gentle Flow</div><div class="teacher">with Amara</div></div><div class="lvl">All levels</div><a href="#visit" class="btn btn-line">Book</a></div>
+        <div class="slot"><div class="time">9:30a</div><div><div class="cname">Vinyasa Strong</div><div class="teacher">with Jonah</div></div><div class="lvl">Intermediate</div><a href="#visit" class="btn btn-line">Book</a></div>
+        <div class="slot"><div class="time">12:00p</div><div><div class="cname">Lunch Break Reset</div><div class="teacher">with Priya</div></div><div class="lvl">All levels</div><a href="#visit" class="btn btn-line">Book</a></div>
+        <div class="slot"><div class="time">5:30p</div><div><div class="cname">Candlelight Restore</div><div class="teacher">with Amara</div></div><div class="lvl">All levels</div><a href="#visit" class="btn btn-line">Book</a></div>
+        <div class="slot"><div class="time">7:00p</div><div><div class="cname">Breathe &amp; Meditate</div><div class="teacher">with Sam</div></div><div class="lvl">All levels</div><a href="#visit" class="btn btn-line">Book</a></div>
       </div>
     </div>
   </section>
@@ -141,9 +165,9 @@
     <div class="wrap">
       <div class="sec-head"><p class="eyebrow">Membership</p><h2>Simple, flexible pricing</h2></div>
       <div class="cards2">
-        <div class="pc"><h3>Drop-In</h3><div class="amt">$18</div><div class="per">per class</div><ul><li>Any single class</li><li>No commitment</li><li>Mat &amp; props included</li></ul><a href="#" class="btn btn-line">Book a class</a></div>
-        <div class="pc feat"><h3>Unlimited</h3><div class="amt">$99</div><div class="per">per month</div><ul><li>Unlimited classes</li><li>2 guest passes / mo</li><li>10% off workshops</li></ul><a href="#" class="btn" style="background:#fff;color:var(--sage-d)">Join now</a></div>
-        <div class="pc"><h3>10-Class Pack</h3><div class="amt">$150</div><div class="per">valid 3 months</div><ul><li>10 classes</li><li>Share with a friend</li><li>Mat &amp; props included</li></ul><a href="#" class="btn btn-line">Buy pack</a></div>
+        <div class="pc"><h3>Drop-In</h3><div class="amt">$18</div><div class="per">per class</div><ul><li>Any single class</li><li>No commitment</li><li>Mat &amp; props included</li></ul><a href="#visit" class="btn btn-line">Book a class</a></div>
+        <div class="pc feat"><h3>Unlimited</h3><div class="amt">$99</div><div class="per">per month</div><ul><li>Unlimited classes</li><li>2 guest passes / mo</li><li>10% off workshops</li></ul><a href="#visit" class="btn" style="background:#fff;color:var(--sage-d)">Join now</a></div>
+        <div class="pc"><h3>10-Class Pack</h3><div class="amt">$150</div><div class="per">valid 3 months</div><ul><li>10 classes</li><li>Share with a friend</li><li>Mat &amp; props included</li></ul><a href="#visit" class="btn btn-line">Buy pack</a></div>
       </div>
     </div>
   </section>
@@ -152,8 +176,8 @@
     <div class="wrap">
       <div class="cta">
         <h2>Your first class is on us.</h2>
-        <p>New here? Come try any class free — no pressure, just breathe.</p>
-        <a href="#" class="btn" style="background:#fff;color:var(--sage-d)">Claim your free class</a>
+        <p>New here? Come try any class free — call <strong>(555) 442-8890</strong> or drop by at 210 Willow Lane, Riverside. No pressure, just breathe.</p>
+        <a href="tel:+15554428890" class="btn" style="background:#fff;color:var(--sage-d)">Claim your free class</a>
       </div>
     </div>
   </section>
@@ -162,8 +186,8 @@
     <div class="wrap">
       <div class="logo"><span class="b">❋</span> Still Point Studio</div>
       <p>210 Willow Lane, Riverside · (555) 442-8890</p>
-      <div class="socials"><a href="#">Instagram</a><a href="#">Newsletter</a><a href="#">Schedule</a></div>
-      <p class="fine">Demo concept site built by Northlight Studio · <a href="../index.html">northlight.studio</a></p>
+      <div class="socials"><span>Instagram</span><span>Newsletter</span><a href="#schedule">Schedule</a></div>
+      <p class="fine">Fictional demo site built by Northlight Studio · <a href="/work">← Back to portfolio</a></p>
     </div>
   </footer>
 </body>

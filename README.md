@@ -28,15 +28,16 @@ to Vercel (or any static host) in seconds.
 
 ## Run it locally
 
-It's just files — open `index.html` in a browser, or serve the folder:
+It's just files, but internal links use clean URLs (`/pricing`, not
+`/pricing.html`) to match Vercel's `cleanUrls` setting — so serve it with a
+clean-URL-aware server:
 
 ```bash
-# any one of these
 npx serve .
-python3 -m http.server 5173
 ```
 
-Then visit `http://localhost:5173`.
+Then visit `http://localhost:3000`. (Plain `python3 -m http.server` won't
+resolve the extensionless links.)
 
 ---
 
