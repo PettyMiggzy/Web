@@ -1,11 +1,11 @@
-# Northlight Studio — website
+# Simplicity Builds — website
 
 A premium, hand-built marketing site for a small-business web-design company.
 Pure static HTML/CSS/JS — no build step, no framework, no dependencies. Deploys
 to Vercel (or any static host) in seconds.
 
-> **Northlight** is a placeholder brand name — pick your favorite from
-> [`BRAND.md`](BRAND.md) and rename in one step (instructions below).
+> The brand is **Simplicity Builds** (`simplicitybuilds.com`). If you ever want
+> to rename again, the one-step instructions are below.
 
 ---
 
@@ -71,13 +71,13 @@ of submitting.
 
 ## Rename the brand (once you've chosen a name)
 
-The brand name appears as the word **"Northlight"** and the email
-`hello@northlight.studio`. To rebrand:
+The brand name appears as the word **"Simplicity Builds"** and the email
+`hello@simplicitybuilds.com`. To rebrand:
 
 ```bash
 # from the repo root — replace with your chosen name / domain
-grep -rl "Northlight" . --include="*.html" | xargs sed -i 's/Northlight/YourName/g'
-grep -rl "northlight.studio" . --include="*.html" | xargs sed -i 's/northlight\.studio/yourdomain.com/g'
+grep -rl "Simplicity Builds" . --include="*.html" | xargs sed -i 's/Simplicity Builds/YourName/g'
+grep -rl "simplicitybuilds.com" . --include="*.html" | xargs sed -i 's/simplicitybuilds\.com/yourdomain.com/g'
 ```
 
 Then swap the mark in `assets/favicon.svg` if you want a different logo.

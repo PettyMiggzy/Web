@@ -1,5 +1,5 @@
 /* =========================================================================
-   Northlight Studio — interactions
+   Simplicity Builds — interactions
    Vanilla JS, no dependencies. Progressive: page works without it.
    ========================================================================= */
 (function () {
@@ -140,7 +140,7 @@
         if (status) {
           status.innerHTML =
             'Our form is briefly offline — please email us directly at ' +
-            '<a href="mailto:hello@northlight.studio" style="text-decoration:underline;">hello@northlight.studio</a> ' +
+            '<a href="mailto:hello@simplicitybuilds.com" style="text-decoration:underline;">hello@simplicitybuilds.com</a> ' +
             "and we’ll reply within one business day.";
           status.style.color = "var(--accent-2)";
         }

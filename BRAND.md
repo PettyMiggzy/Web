@@ -6,13 +6,13 @@ Everything you need to (1) pick a name, and (2) run the business behind this sit
 
 ## 1. Name options
 
-The site is built with **"Northlight"** as a placeholder. Here's a shortlist —
+The site is built with **"Simplicity Builds"** as a placeholder. Here's a shortlist —
 each reads premium and works for a web-design studio. Check the `.com` before
 you commit (see below), then rename with the one-liner in the README.
 
 | Name | Vibe | Domain ideas to check |
 |------|------|-----------------------|
-| **Northlight** | Premium, guiding, distinctive (current build) | northlight.studio · northlightweb.com · getnorthlight.com |
+| **Simplicity Builds** | Premium, guiding, distinctive (current build) | simplicitybuilds.com · northlightweb.com · getnorthlight.com |
 | **Meridian** | High-end agency, "peak / point on the map" | meridianweb.co · meridian.studio · trymeridian.com |
 | **Vela** | Short, modern, constellation ("the sails") | vela.studio · velaweb.co · vela.build |
 | **Beacon** | "Get seen / get found" — great for local SEO angle | beacon.studio · beaconsites.com · getbeacon.co |
@@ -28,7 +28,7 @@ you commit (see below), then rename with the one-liner in the README.
   example) to avoid confusion.
 - Grab the matching Instagram / Facebook handle at the same time.
 
-> **Recommendation:** *Northlight* or *Beacon* if you want to lean on the
+> **Recommendation:** *Simplicity Builds* or *Beacon* if you want to lean on the
 > "get your business seen" story; *Meridian* or *Vela* if you want to feel more
 > like a premium boutique studio.
 
