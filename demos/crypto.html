@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crypto Dashboard — Premium Demo (Northlight Studio)</title>
-  <meta name="description" content="Premium crypto dashboard demo by Northlight Studio. Password protected — showcasing advanced crypto trading UI design." />
+  <meta name="description" content="Premium crypto dashboard demo by Northlight Studio. Advanced fintech UI design showcase for crypto trading platforms." />
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,159 +37,6 @@
 
     body {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* AUTH SCREEN */
-    .auth-container {
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto;
-      padding: 2rem;
-      background: linear-gradient(135deg, var(--darker) 0%, var(--card) 100%);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0, 212, 255, 0.1);
-      animation: slideIn 0.6s ease-out;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .auth-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .auth-logo {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, var(--accent) 0%, #00ffff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 700;
-      font-family: "Space Mono", monospace;
-    }
-
-    .auth-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .auth-subtitle {
-      color: var(--text-dim);
-      font-size: 0.9rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.6rem;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-
-    input[type="password"] {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      background: var(--darker);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text);
-      font-size: 1rem;
-      font-family: "Space Mono", monospace;
-      letter-spacing: 0.05em;
-      transition: all 0.3s ease;
-    }
-
-    input[type="password"]:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
-    }
-
-    .btn-unlock {
-      width: 100%;
-      padding: 0.95rem 1.5rem;
-      background: linear-gradient(135deg, var(--accent) 0%, #00ffff 100%);
-      color: var(--dark);
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .btn-unlock:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
-    }
-
-    .btn-unlock:active {
-      transform: translateY(0);
-    }
-
-    .error-message {
-      display: none;
-      background: rgba(255, 51, 102, 0.1);
-      border: 1px solid var(--danger);
-      color: #ff6699;
-      padding: 0.8rem 1rem;
-      border-radius: 6px;
-      margin-bottom: 1.5rem;
-      font-size: 0.9rem;
-      animation: shake 0.4s ease;
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
-    }
-
-    .error-message.show {
-      display: block;
-    }
-
-    .hint {
-      text-align: center;
-      margin-top: 1.5rem;
-      color: var(--text-dim);
-      font-size: 0.85rem;
-    }
-
-    .hint strong {
-      color: var(--text);
-    }
-
-    /* DEMO CONTENT */
-    .demo-content {
-      display: none;
-      width: 100%;
-      min-height: 100vh;
-      background: var(--dark);
-    }
-
-    .demo-content.show {
-      display: block;
     }
 
     .demo-bar {
@@ -199,6 +46,17 @@
       text-align: center;
       font-size: 0.85rem;
       color: var(--text-dim);
+    }
+
+    .demo-bar a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 1rem;
+    }
+
+    .demo-bar a:hover {
+      text-decoration: underline;
     }
 
     .dashboard {
@@ -224,21 +82,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       font-family: "Space Mono", monospace;
-    }
-
-    .unlock-btn {
-      padding: 0.6rem 1.2rem;
-      background: var(--danger);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .unlock-btn:hover {
-      background: #ff1f4a;
     }
 
     .grid {
@@ -309,11 +152,41 @@
       opacity: 0.5;
     }
 
-    @media (max-width: 768px) {
-      .auth-container {
-        padding: 1.5rem;
-      }
+    .cta-section {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--card) 0%, var(--darker) 100%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+    }
 
+    .cta-text {
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 0.95rem 2rem;
+      background: linear-gradient(135deg, var(--accent) 0%, #00ffff 100%);
+      color: var(--dark);
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+    }
+
+    @media (max-width: 768px) {
       .title {
         font-size: 1.5rem;
       }
@@ -321,145 +194,79 @@
       .dashboard {
         padding: 1rem;
       }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- AUTH SCREEN -->
-  <div class="auth-container" id="authScreen">
-    <div class="auth-header">
-      <div class="auth-logo">₿</div>
-      <h1 class="auth-title">Crypto Dashboard</h1>
-      <p class="auth-subtitle">Premium Demo — Northlight Studio</p>
-    </div>
-
-    <div class="error-message" id="errorMessage"></div>
-
-    <form id="authForm" onsubmit="handleLogin(event)">
-      <div class="form-group">
-        <label for="password">Access Password</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="••••••••"
-          required
-          autocomplete="off"
-        />
-      </div>
-      <button type="submit" class="btn-unlock">Unlock Demo</button>
-    </form>
-
-    <div class="hint">
-      💡 <strong>Hint:</strong> Check your email or contact details provided
-    </div>
+  <div class="demo-bar">
+    <strong>💰 CRYPTO DASHBOARD DEMO</strong> — Premium design showcase by Northlight Studio
+    <a href="../work.html">← Back to Portfolio</a>
   </div>
 
-  <!-- DEMO CONTENT -->
-  <div class="demo-content" id="demoContent">
-    <div class="demo-bar">
-      <strong>💰 PREMIUM CRYPTO DASHBOARD DEMO</strong> — Design showcase by Northlight Studio
-      <a href="javascript:logout()" style="margin-left: 1rem; color: var(--danger);">Lock</a>
+  <div class="dashboard">
+    <div class="header">
+      <h1 class="title">Portfolio Dashboard</h1>
     </div>
 
-    <div class="dashboard">
-      <div class="header">
-        <h1 class="title">Portfolio</h1>
-        <button class="unlock-btn" onclick="logout()">Lock Access</button>
+    <div class="grid">
+      <div class="card">
+        <div class="card-label">Total Balance</div>
+        <div class="card-value">$87,542.33</div>
+        <div class="card-change positive">↑ +12.45% (24h)</div>
       </div>
 
-      <div class="grid">
-        <div class="card">
-          <div class="card-label">Total Balance</div>
-          <div class="card-value">$87,542.33</div>
-          <div class="card-change positive">↑ +12.45% (24h)</div>
-        </div>
-
-        <div class="card">
-          <div class="card-label">BTC Holdings</div>
-          <div class="card-value">2.3450 BTC</div>
-          <div class="card-change positive">↑ +8.32%</div>
-        </div>
-
-        <div class="card">
-          <div class="card-label">ETH Holdings</div>
-          <div class="card-value">15.8920 ETH</div>
-          <div class="card-change negative">↓ -2.15%</div>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Staking Rewards</div>
-          <div class="card-value">+$2,341.22</div>
-          <div class="card-change positive">↑ +18.7% APY</div>
-        </div>
+      <div class="card">
+        <div class="card-label">BTC Holdings</div>
+        <div class="card-value">2.3450 BTC</div>
+        <div class="card-change positive">↑ +8.32%</div>
       </div>
 
-      <div class="chart-placeholder">
-        <div>
-          <div class="chart-icon">📊</div>
-          <p>Interactive price charts and trading history would appear here</p>
-          <p style="font-size: 0.8rem; margin-top: 1rem; color: var(--text-dim);">
-            This is a design showcase — not connected to real blockchain data
-          </p>
-        </div>
+      <div class="card">
+        <div class="card-label">ETH Holdings</div>
+        <div class="card-value">15.8920 ETH</div>
+        <div class="card-change negative">↓ -2.15%</div>
       </div>
+
+      <div class="card">
+        <div class="card-label">Staking Rewards</div>
+        <div class="card-value">+$2,341.22</div>
+        <div class="card-change positive">↑ +18.7% APY</div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">24h Trading Volume</div>
+        <div class="card-value">$1,245,000</div>
+        <div class="card-change positive">↑ +34.2%</div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Portfolio Diversity</div>
+        <div class="card-value">8 Assets</div>
+        <div class="card-change">Low Risk Score</div>
+      </div>
+    </div>
+
+    <div class="chart-placeholder">
+      <div>
+        <div class="chart-icon">📊</div>
+        <p><strong>Interactive Price Charts</strong> would display real-time trading data, order history, and advanced analytics</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem; color: var(--text-dim);">
+          This demo showcases the UI/UX design — built as a static site for fast load times and premium presentation.
+        </p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <p class="cta-text">Impressed with this design? Let's build your crypto platform.</p>
+      <a href="../contact.html" class="cta-btn">Start Your Project</a>
     </div>
   </div>
-
-  <script>
-    // Simple password: can be changed or connected to backend
-    const DEMO_PASSWORD = "crypto2024";
-
-    function handleLogin(event) {
-      event.preventDefault();
-
-      const passwordInput = document.getElementById("password");
-      const errorMessage = document.getElementById("errorMessage");
-      const password = passwordInput.value;
-
-      if (password === DEMO_PASSWORD) {
-        // Store in sessionStorage (clears on browser close)
-        sessionStorage.setItem("cryptoDemoAuth", "true");
-
-        // Hide auth, show demo
-        document.getElementById("authScreen").style.display = "none";
-        document.getElementById("demoContent").classList.add("show");
-      } else {
-        errorMessage.textContent = "❌ Incorrect password. Try again.";
-        errorMessage.classList.add("show");
-        passwordInput.value = "";
-        passwordInput.focus();
-
-        // Hide error after 3 seconds
-        setTimeout(() => {
-          errorMessage.classList.remove("show");
-        }, 3000);
-      }
-    }
-
-    function logout() {
-      sessionStorage.removeItem("cryptoDemoAuth");
-      document.getElementById("demoContent").classList.remove("show");
-      document.getElementById("authScreen").style.display = "block";
-      document.getElementById("password").value = "";
-      document.getElementById("errorMessage").classList.remove("show");
-    }
-
-    // Check if already authenticated (on page load)
-    window.addEventListener("load", () => {
-      if (sessionStorage.getItem("cryptoDemoAuth")) {
-        document.getElementById("authScreen").style.display = "none";
-        document.getElementById("demoContent").classList.add("show");
-      }
-    });
-
-    // Allow Enter key to submit
-    document.getElementById("password").addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        document.getElementById("authForm").dispatchEvent(new Event("submit"));
-      }
-    });
-  </script>
 
 </body>
 </html>
