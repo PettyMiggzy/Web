@@ -396,6 +396,9 @@ section { padding-block: var(--pad-section); }
 .bg-g5 { background: linear-gradient(135deg,#231557,#44107a,#ff1361aa); }
 .bg-g6 { background: linear-gradient(135deg,#0b486b,#3b8686,#37d0e2); }
 
+/* Section imagery */
+.photo-panel { width: 100%; height: auto; border-radius: var(--radius-lg); border: 1px solid var(--line); object-fit: cover; box-shadow: var(--shadow-2); display: block; }
+
 /* Photographic card backgrounds (AI-generated project imagery) */
 .work-card [class*="bg-photo-"] { background-size: cover; background-position: center; }
 .bg-photo-fintech  { background-image: linear-gradient(180deg, rgba(5,5,10,.05), rgba(5,5,10,.25)), url("/assets/work/fintech.webp"); }
