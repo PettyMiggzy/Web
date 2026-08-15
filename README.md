@@ -1,11 +1,11 @@
-# Northlight Studio — website
+# Simplicity Builds — website
 
 A premium, hand-built marketing site for a small-business web-design company.
 Pure static HTML/CSS/JS — no build step, no framework, no dependencies. Deploys
 to Vercel (or any static host) in seconds.
 
-> **Northlight** is a placeholder brand name — pick your favorite from
-> [`BRAND.md`](BRAND.md) and rename in one step (instructions below).
+> The brand is **Simplicity Builds** (`simplicitybuilds.com`). If you ever want
+> to rename again, the one-step instructions are below.
 
 ---
 
@@ -28,15 +28,16 @@ to Vercel (or any static host) in seconds.
 
 ## Run it locally
 
-It's just files — open `index.html` in a browser, or serve the folder:
+It's just files, but internal links use clean URLs (`/pricing`, not
+`/pricing.html`) to match Vercel's `cleanUrls` setting — so serve it with a
+clean-URL-aware server:
 
 ```bash
-# any one of these
 npx serve .
-python3 -m http.server 5173
 ```
 
-Then visit `http://localhost:5173`.
+Then visit `http://localhost:3000`. (Plain `python3 -m http.server` won't
+resolve the extensionless links.)
 
 ---
 
@@ -70,13 +71,13 @@ of submitting.
 
 ## Rename the brand (once you've chosen a name)
 
-The brand name appears as the word **"Northlight"** and the email
-`hello@northlight.studio`. To rebrand:
+The brand name appears as the word **"Simplicity Builds"** and the email
+`hello@simplicitybuilds.com`. To rebrand:
 
 ```bash
 # from the repo root — replace with your chosen name / domain
-grep -rl "Northlight" . --include="*.html" | xargs sed -i 's/Northlight/YourName/g'
-grep -rl "northlight.studio" . --include="*.html" | xargs sed -i 's/northlight\.studio/yourdomain.com/g'
+grep -rl "Simplicity Builds" . --include="*.html" | xargs sed -i 's/Simplicity Builds/YourName/g'
+grep -rl "simplicitybuilds.com" . --include="*.html" | xargs sed -i 's/simplicitybuilds\.com/yourdomain.com/g'
 ```
 
 Then swap the mark in `assets/favicon.svg` if you want a different logo.

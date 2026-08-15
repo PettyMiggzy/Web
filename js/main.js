@@ -1,5 +1,5 @@
 /* =========================================================================
-   Northlight Studio — interactions
+   Simplicity Builds — interactions
    Vanilla JS, no dependencies. Progressive: page works without it.
    ========================================================================= */
 (function () {
@@ -7,9 +7,14 @@
 
   /* ---- Sticky header: condense on scroll ---- */
   const header = document.querySelector(".site-header");
+  let scrolled = null;
   const onScroll = () => {
     if (!header) return;
-    header.classList.toggle("scrolled", window.scrollY > 24);
+    const s = window.scrollY > 24;
+    if (s !== scrolled) {
+      scrolled = s;
+      header.classList.toggle("scrolled", s);
+    }
   };
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
@@ -18,16 +23,22 @@
   const body = document.body;
   const toggle = document.querySelector(".nav-toggle");
   if (toggle) {
-    toggle.addEventListener("click", () => {
-      body.classList.toggle("nav-open");
-      const open = body.classList.contains("nav-open");
+    const setMenu = (open) => {
+      body.classList.toggle("nav-open", open);
       toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       body.style.overflow = open ? "hidden" : "";
+      if (!open) toggle.focus();
+    };
+    toggle.addEventListener("click", () => setMenu(!body.classList.contains("nav-open")));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && body.classList.contains("nav-open")) setMenu(false);
     });
     document.querySelectorAll(".mobile-menu a").forEach((a) =>
       a.addEventListener("click", () => {
         body.classList.remove("nav-open");
         toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open menu");
         body.style.overflow = "";
       })
     );
@@ -60,7 +71,19 @@
       const answer = item.querySelector(".faq-a");
       const isOpen = item.classList.toggle("open");
       q.setAttribute("aria-expanded", String(isOpen));
-      answer.style.maxHeight = isOpen ? answer.scrollHeight + "px" : "0px";
+      if (isOpen) {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        // Once fully open, release the pixel cap so later reflows never clip it
+        answer.addEventListener(
+          "transitionend",
+          () => { if (item.classList.contains("open")) answer.style.maxHeight = "none"; },
+          { once: true }
+        );
+      } else {
+        // From "none" back to a measured value so the collapse can animate
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        requestAnimationFrame(() => { answer.style.maxHeight = "0px"; });
+      }
     });
   });
 
@@ -68,8 +91,9 @@
   const priceSwitch = document.querySelector(".switch");
   if (priceSwitch) {
     const labels = document.querySelectorAll(".toggle-label");
+    const status = document.querySelector(".toggle-status");
     const setMode = (annual) => {
-      priceSwitch.setAttribute("aria-pressed", String(annual));
+      priceSwitch.setAttribute("aria-checked", String(annual));
       document.querySelectorAll("[data-monthly]").forEach((el) => {
         el.textContent = annual ? el.dataset.annual : el.dataset.monthly;
       });
@@ -78,9 +102,14 @@
       });
       if (labels[0]) labels[0].classList.toggle("on", !annual);
       if (labels[1]) labels[1].classList.toggle("on", annual);
+      if (status) {
+        status.textContent = annual
+          ? "Showing annual prices — two months free, setup fee waived"
+          : "Showing monthly prices";
+      }
     };
     priceSwitch.addEventListener("click", () => {
-      setMode(priceSwitch.getAttribute("aria-pressed") !== "true");
+      setMode(priceSwitch.getAttribute("aria-checked") !== "true");
     });
     setMode(false);
   }
@@ -89,18 +118,30 @@
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---- Contact form: preselect plan from ?plan= query ---- */
+  const planSelect = document.getElementById("plan");
+  if (planSelect) {
+    const wanted = new URLSearchParams(location.search).get("plan");
+    if (wanted && planSelect.querySelector('option[value="' + wanted + '"]')) {
+      planSelect.value = wanted;
+    }
+  }
+
   /* ---- Contact form (front-end validation + friendly submit) ---- */
   const form = document.querySelector("form[data-contact]");
   if (form) {
     form.addEventListener("submit", (e) => {
-      // If no real endpoint is wired yet, prevent default and show a message.
+      // If no real endpoint is wired yet, prevent default and route to email
+      // instead — never pretend a lost submission succeeded.
       const action = form.getAttribute("action") || "";
       if (action.includes("YOUR_FORM_ID") || action === "#") {
         e.preventDefault();
         const status = form.querySelector(".form-status");
         if (status) {
-          status.textContent =
-            "Thanks! Connect a Formspree/Basin endpoint to receive this (see README).";
+          status.innerHTML =
+            'Our form is briefly offline — please email us directly at ' +
+            '<a href="mailto:hello@simplicitybuilds.com" style="text-decoration:underline;">hello@simplicitybuilds.com</a> ' +
+            "and we’ll reply within one business day.";
           status.style.color = "var(--accent-2)";
         }
       }

@@ -3,45 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pricing — Northlight Studio | Websites from $49.99/mo, no lock-in</title>
+  <title>Pricing — Simplicity Builds | Websites from $49.99/mo, no lock-in</title>
   <meta name="description" content="Flat monthly website plans from $49.99. Design, hosting, SSL & maintenance included. Cheaper than the $97/mo agencies — with full ownership and no contracts." />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Simplicity Builds" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0a0a12" />
+  <link rel="canonical" href="https://simplicitybuilds.com/pricing" />
+  <meta property="og:title" content="Pricing — Simplicity Builds | Websites from $49.99/mo" />
+  <meta property="og:description" content="Transparent pricing for premium websites. Launch, Grow, or Scale plans." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://simplicitybuilds.com/pricing" />
+  <meta property="og:image" content="https://simplicitybuilds.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Simplicity Builds — premium websites for small business" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script>document.documentElement.classList.add("js");</script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Website Design Services",
+      "description": "Premium hand-built websites for small businesses",
+      "brand": {
+        "@type": "Brand",
+        "name": "Simplicity Builds"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Launch",
+          "description": "Perfect for getting online fast",
+          "price": "49.99",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Grow",
+          "description": "For businesses ready to scale",
+          "price": "89.99",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Scale",
+          "description": "For high-growth businesses",
+          "price": "149.99",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    }
+  </script>
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
     <div class="container nav">
-      <a href="index.html" class="brand" aria-label="Northlight Studio — home">
+      <a href="/" class="brand" aria-label="Simplicity Builds — home">
         <svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
           <defs><linearGradient id="bm" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#7c6cff"/><stop offset="0.5" stop-color="#9b7bff"/><stop offset="1" stop-color="#37d0e2"/></linearGradient></defs>
           <path d="M32 12 C34 24 40 30 52 32 C40 34 34 40 32 52 C30 40 24 34 12 32 C24 30 30 24 32 12 Z" fill="url(#bm)"/>
         </svg>
-        Northlight
+        Simplicity Builds
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="services.html">Websites</a><a href="development.html">Development</a>
-        <a href="pricing.html" class="active">Pricing</a>
-        <a href="work.html">Work</a>
-        <a href="about.html">About</a>
+        <a href="/">Home</a>
+        <a href="/services">Websites</a><a href="/development">Development</a>
+        <a href="/pricing" class="active">Pricing</a>
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
       </nav>
       <div class="nav-cta">
-        <a href="contact.html" class="btn btn-ghost">Book a call</a>
-        <a href="contact.html" class="btn btn-primary">Start my site</a>
+        <a href="/contact" class="btn btn-ghost">Book a call</a>
+        <a href="/contact" class="btn btn-primary">Start my site</a>
       </div>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
     </div>
-    <div class="mobile-menu">
-      <a href="index.html">Home</a><a href="services.html">Websites</a><a href="development.html">Development</a><a href="pricing.html">Pricing</a><a href="work.html">Work</a><a href="about.html">About</a>
-      <a href="contact.html" class="btn btn-primary btn-lg">Start my site</a>
-    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="/">Home</a><a href="/services">Websites</a><a href="/development">Development</a><a href="/pricing">Pricing</a><a href="/work">Work</a><a href="/about">About</a>
+      <a href="/contact" class="btn btn-primary btn-lg">Start my site</a>
+    </nav>
   </header>
 
-  <main>
+  <main id="main">
     <!-- PAGE HERO -->
     <section class="page-hero">
       <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -57,9 +115,10 @@
       <div class="container">
         <div class="toggle-wrap reveal">
           <span class="toggle-label on">Monthly</span>
-          <button class="switch" role="switch" aria-pressed="false" aria-label="Toggle annual pricing"></button>
+          <button class="switch" role="switch" aria-checked="false" aria-label="Toggle annual pricing"></button>
           <span class="toggle-label">Annually</span>
           <span class="save">2 months free</span>
+          <span class="toggle-status visually-hidden" role="status" aria-live="polite"></span>
         </div>
 
         <div class="price-grid">
@@ -67,7 +126,7 @@
           <article class="card price-card reveal">
             <div class="tier-name">Launch</div>
             <p class="tier-desc">A sharp, professional presence to get your business online fast.</p>
-            <div class="price-amount"><span class="cur">$</span><span class="val" data-monthly="49.99" data-annual="41.58">49.99</span><span class="per">/mo</span></div>
+            <div class="price-amount"><span class="cur">$</span><span class="val" data-monthly="49.99" data-annual="41.66">49.99</span><span class="per">/mo</span></div>
             <p class="price-setup" data-setup data-setup-monthly="<strong>$99 setup</strong> · one-time build fee" data-setup-annual="<strong>Setup waived</strong> · you save $99"><strong>$99 setup</strong> · one-time build fee</p>
             <ul class="check-list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Up to 5 pages, custom design</li>
@@ -77,7 +136,7 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> 2 content edits / month</li>
               <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"/></svg> Blog / CMS &amp; advanced SEO</li>
             </ul>
-            <a href="contact.html?plan=launch" class="btn btn-ghost btn-block">Choose Launch</a>
+            <a href="/contact?plan=launch" class="btn btn-ghost btn-block">Choose Launch</a>
           </article>
 
           <!-- GROW -->
@@ -95,7 +154,7 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> 5 edits / month + monthly backups</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Priority email support</li>
             </ul>
-            <a href="contact.html?plan=grow" class="btn btn-primary btn-block">Choose Grow</a>
+            <a href="/contact?plan=grow" class="btn btn-primary btn-block">Choose Grow</a>
           </article>
 
           <!-- SCALE -->
@@ -110,14 +169,14 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> E-commerce / appointment system</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Priority 24-hour edits</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Monthly analytics report</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Unlimited products / services</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Up to 100 products or services</li>
             </ul>
-            <a href="contact.html?plan=scale" class="btn btn-ghost btn-block">Choose Scale</a>
+            <a href="/contact?plan=scale" class="btn btn-ghost btn-block">Choose Scale</a>
           </article>
         </div>
 
         <!-- OWN-IT ONE-TIME -->
-        <div class="panel reveal mt-3" style="margin-top:2rem;">
+        <div class="panel reveal mt-3" id="own-it" style="margin-top:2rem;">
           <div class="split" style="align-items:center;">
             <div>
               <span class="eyebrow">Rather own it outright?</span>
@@ -125,8 +184,8 @@
               <p class="mt-1">We build and launch your site, hand you the keys, and keep it hosted, secure, and backed up for a small flat fee. No monthly design retainer — perfect if you want to pay once and own everything. Edits are available à la carte.</p>
             </div>
             <div style="text-align:center;">
-              <a href="contact.html?plan=ownit" class="btn btn-primary btn-lg">Ask about Own-It</a>
-              <p class="form-note mt-1">Hosting, SSL &amp; uptime included · edits from $29</p>
+              <a href="/contact?plan=ownit" class="btn btn-primary btn-lg">Ask about Own-It</a>
+              <p class="form-note mt-1">Hosting, SSL, backups &amp; uptime included · edits from $29</p>
             </div>
           </div>
         </div>
@@ -138,7 +197,7 @@
       <div class="container">
         <div class="section-head center reveal">
           <span class="eyebrow">The honest comparison</span>
-          <h2>Northlight vs. the alternatives</h2>
+          <h2>Simplicity Builds vs. the alternatives</h2>
           <p class="lead">Same goal — a great website. Very different deal.</p>
         </div>
         <div class="compare-wrap reveal d1">
@@ -146,7 +205,7 @@
             <thead>
               <tr>
                 <th>What matters</th>
-                <th class="col-us">Northlight</th>
+                <th class="col-us">Simplicity Builds</th>
                 <th>“$97/mo” agency</th>
                 <th>DIY builder</th>
                 <th>Freelancer</th>
@@ -169,7 +228,7 @@
     </section>
 
     <!-- ADD-ONS -->
-    <section class="section-tight">
+    <section class="section-tight" id="addons">
       <div class="container">
         <div class="section-head center reveal">
           <span class="eyebrow">Build your package</span>
@@ -220,7 +279,7 @@
           <span class="eyebrow" style="justify-content:center;">No pressure</span>
           <h2 class="mt-1">Not sure which plan fits?</h2>
           <p class="lead">Tell us about your business and we’ll recommend the right one — free, in about 15 minutes.</p>
-          <div class="hero-cta"><a href="contact.html" class="btn btn-primary btn-lg">Get my free recommendation</a></div>
+          <div class="hero-cta"><a href="/contact" class="btn btn-primary btn-lg">Get my free recommendation</a></div>
         </div>
       </div>
     </section>
@@ -230,24 +289,20 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="index.html" class="brand"><svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 12 C34 24 40 30 52 32 C40 34 34 40 32 52 C30 40 24 34 12 32 C24 30 30 24 32 12 Z" fill="url(#bm)"/></svg> Northlight</a>
+          <a href="/" class="brand"><svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 12 C34 24 40 30 52 32 C40 34 34 40 32 52 C30 40 24 34 12 32 C24 30 30 24 32 12 Z" fill="url(#bm)"/></svg> Simplicity Builds</a>
           <p>Premium, hand-built websites for small businesses. Launched in a week. Hosted, maintained, and owned by you.</p>
         </div>
-        <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="work.html">Our work</a><a href="services.html">Websites</a><a href="development.html">Development</a><a href="contact.html">Contact</a></div>
-        <div class="footer-col"><h4>Plans</h4><a href="pricing.html">Pricing</a><a href="pricing.html">Add-ons</a><a href="pricing.html">One-time build</a><a href="contact.html">Get a quote</a></div>
-        <div class="footer-col"><h4>Get started</h4><a href="contact.html">Book a call</a><a href="contact.html">Start my site</a><a href="mailto:hello@northlight.studio">hello@northlight.studio</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="/about">About</a><a href="/work">Our work</a><a href="/services">Websites</a><a href="/development">Development</a><a href="/contact">Contact</a></div>
+        <div class="footer-col"><h4>Plans</h4><a href="/pricing">Pricing</a><a href="/pricing#addons">Add-ons</a><a href="/pricing#own-it">One-time build</a><a href="/contact">Get a quote</a></div>
+        <div class="footer-col"><h4>Get started</h4><a href="/contact">Book a call</a><a href="/contact">Start my site</a><a href="mailto:hello@simplicitybuilds.com">hello@simplicitybuilds.com</a></div>
       </div>
       <div class="footer-bottom">
-        <span>© <span id="year"></span> Northlight Studio. All rights reserved.</span>
-        <div class="socials">
-          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 3h-3a4 4 0 00-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9h4v11H4zM6 4a2 2 0 110 4 2 2 0 010-4zM12 9h4v2a3 3 0 013-2c3 0 4 2 4 5v6h-4v-6c0-1-1-2-2-2s-2 1-2 2v6h-4z"/></svg></a>
-        </div>
+        <span>© <span id="year">2026</span> Simplicity Builds. All rights reserved.</span>
+        <a class="footer-legal" href="/privacy">Privacy policy</a>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>
