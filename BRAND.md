@@ -38,14 +38,17 @@ you commit (see below), then rename with the one-liner in the README.
 
 ### The market (why $49.99 wins)
 
-| Competitor type | Typical price | What they deliver | Your opening |
+| Competitor type | Real price (verified Aug 2026) | What they deliver | Your opening |
 |---|---|---|---|
-| "$97/mo" ad agencies | $97/mo, 12–24 mo contract | Template + hosting, ticket support, **site held hostage** | Overpriced & locked-in |
-| Freelancers | $500–5,000 one-time | Custom build, then you're alone | Big upfront, no support |
-| DIY builders (Wix/Squarespace) | $16–49/mo | You do all the work | Time + skill gap |
-| Cheap gig builds | $50–500 one-time | Fast, low quality | No maintenance |
+| "$97/mo" marketing bundlers (Townsquare, Hibu, Scorpion, ProSites) | Quoted ~$97 — **actually billed $300–$1,500+/mo** bundled, 12–24 mo contracts | Template/proprietary-platform site, ticket support, **site held hostage on cancel** | Massively overpriced & locked-in; our prices are published |
+| Flat-rate $99/mo done-for-you shops (CalTech Web, Worldwide Web Designs, Jottful) | $99/mo, $0 setup, month-to-month, unlimited updates | Custom site + hosting + updates; some offer money-back guarantees | **Closest real competitors.** We win on annual price ($74.99 Grow) + e-commerce/booking at Scale; watch our setup fees & edit caps vs their $0/unlimited |
+| Freelancers | $500–5,000 one-time (professional work starts ~$1,500–2,500) | Custom build, then you're alone | Big upfront, no support |
+| Agencies | $3,000–$30,000+ one-time; small-biz median ~$5,000 | Custom build + retainer upsell ($35–100/mo maintenance) | Own-It at $799 + $15/mo hosting is near-unique below $1,000 |
+| DIY builders (Wix/Squarespace/GoDaddy) | Advertised from $3 promo — realistically $25–54/mo for a commerce-capable tier | You do all the work | Time + skill gap; nobody makes the next change for them |
+| AI builders (Durable, 10Web, etc.) | $10–49/mo | AI-generated site, zero human service | Cheap but unmaintained; "who makes your next change?" |
+| Cheap gig builds (Fiverr) | $50–750 one-time | Fast, quality/rework risk | No maintenance |
 
-You undercut the **$97 bracket**. Your true cost per client is only a few
+You undercut what the "$97 bracket" actually bills (typically $300+/mo), and you match or beat the honest $99 flat-raters on annual billing. Your true cost per client is only a few
 dollars a month, so $49.99 is still ~90% gross margin. You're not cutting into
 delivery cost — you're cutting the **fat** (ad budgets + lock-in margin) the
 big players bake in.
