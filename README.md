@@ -90,7 +90,7 @@ See [`BRAND.md`](BRAND.md) for name ideas and domain suggestions.
 See [`BRAND.md`](BRAND.md) → *Pricing strategy* for the full breakdown, margin
 math, and positioning notes. Short version:
 
-- **Launch $49.99/mo**, **Grow $89.99/mo**, **Scale $149.99/mo** — each with a
+- **Launch $49.99/mo**, **Grow $69.99/mo**, **Scale $149.99/mo** — each with a
   one-time setup fee that's **waived on annual prepay**.
 - **Own-It Build**: $799 one-time + $15/mo hosting, for clients who want to own
   outright.
