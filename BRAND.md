@@ -41,7 +41,7 @@ you commit (see below), then rename with the one-liner in the README.
 | Competitor type | Real price (verified Aug 2026) | What they deliver | Your opening |
 |---|---|---|---|
 | "$97/mo" marketing bundlers (Townsquare, Hibu, Scorpion, ProSites) | Quoted ~$97 — **actually billed $300–$1,500+/mo** bundled, 12–24 mo contracts | Template/proprietary-platform site, ticket support, **site held hostage on cancel** | Massively overpriced & locked-in; our prices are published |
-| Flat-rate $99/mo done-for-you shops (CalTech Web, Worldwide Web Designs, Jottful) | $99/mo, $0 setup, month-to-month, unlimited updates | Custom site + hosting + updates; some offer money-back guarantees | **Closest real competitors.** We win on annual price ($74.99 Grow) + e-commerce/booking at Scale; watch our setup fees & edit caps vs their $0/unlimited |
+| Flat-rate $99/mo done-for-you shops (CalTech Web, Worldwide Web Designs, Jottful) | $99/mo, $0 setup, month-to-month, unlimited updates | Custom site + hosting + updates; some offer money-back guarantees | **Closest real competitors.** We win on annual price ($58.33 Grow annual, $69.99 monthly) + e-commerce/booking at Scale; watch our setup fees & edit caps vs their $0/unlimited |
 | Freelancers | $500–5,000 one-time (professional work starts ~$1,500–2,500) | Custom build, then you're alone | Big upfront, no support |
 | Agencies | $3,000–$30,000+ one-time; small-biz median ~$5,000 | Custom build + retainer upsell ($35–100/mo maintenance) | Own-It at $799 + $15/mo hosting is near-unique below $1,000 |
 | DIY builders (Wix/Squarespace/GoDaddy) | Advertised from $3 promo — realistically $25–54/mo for a commerce-capable tier | You do all the work | Time + skill gap; nobody makes the next change for them |
@@ -63,13 +63,13 @@ the "$97/mo" framing buyers shop against.
 | Tier | Price | Build | Included monthly |
 |------|-------|-------|------------------|
 | **Launch** | $49.99/mo + $99 setup* | Up to 5 pages, custom design, contact form, SSL | Hosting, uptime, **2 edits/mo** |
-| **Grow** ⭐ | $89.99/mo + $149 setup* | Up to 12 pages, blog/CMS, on-page SEO, lead forms | + **5 edits/mo**, backups, Google Business |
+| **Grow** ⭐ | $69.99/mo + $149 setup* | Up to 12 pages, blog/CMS, on-page SEO, lead forms | + **5 edits/mo**, backups, Google Business |
 | **Scale** | $149.99/mo + $299 setup* | Up to 30 pages OR store/booking, custom design | + **priority 24h edits**, analytics report |
 | **Own-It Build** | $799 one-time + $15/mo | Full build, you own it | Hosting, SSL, uptime only |
 
 \* *Setup fee waived on annual prepay; annual = 2 months free.*
 
-**Note:** even your *middle* tier ($89.99) beats the $97 ads — while giving more.
+**Note:** your *middle* tier ($69.99) now undercuts even the honest $99 flat-raters — while the "$97 ads" crowd really bills $300+.
 
 ### Add-on menu
 
