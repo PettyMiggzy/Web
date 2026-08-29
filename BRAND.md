@@ -123,3 +123,68 @@ and one-time add-ons.*
 5. **Scope creep** — publish a clear "not included" list; every custom ask maps
    to an add-on.
 6. **Low-ticket payment friction** — turn on Stripe retries/dunning from day one.
+
+---
+
+## Cost floor & operating decisions (verified Aug 2026)
+
+**Dollars are not the constraint. Hours are.** A fully optimized delivery stack
+runs ~$34/mo fixed plus ~$0.40 per client — under 1% of a $49.99 plan, ~97%
+gross margin. $49.99 clears its costs comfortably. What it cannot clear is the
+calendar: at 60 hrs/month, after sales and builds, ~37.8 support hours remain →
+~37 Launch clients → ~$1,850/mo gross. That is the ceiling, and no volume gets
+past it. Only price, or attached services, do.
+
+Two levers beat the entire automation project:
+
+1. **Stop waiving setup on annual.** Collecting $99 instead of waiving moves
+   Launch from ~$30.89 to ~$43.65/hr in year one — a bigger gain than
+   compressing the build from 8 hrs to 3.6.
+2. **Attach services whose cost is dollars, not hours.** An AI receptionist
+   runs ~$28/mo turnkey at ~0.4 hrs/month. Trading 4 website clients for 11
+   phone lines turns the same 60 hours into ~$4,389 gross (~$67/hr) instead of
+   ~$1,850 (~$30/hr). That line runs at roughly $550 per hour of attention.
+
+Build time compresses 8 hrs → ~3.6, and **two-thirds of that saving is the
+template system, not the AI** — build the template + CSS token theming first.
+Support compresses 1.5 → ~1.0 hrs; the irreducible floor is ~55–65 min.
+
+### Hosting: Cloudflare Pages, not Vercel
+
+Vercel's Fair Use Guidelines state plainly: *"Hobby teams are restricted to
+non-commercial personal use only,"* and commercial usage explicitly includes
+*"advertising the sale of a product or service"* and *"receiving payment to
+create, update, or host the site."* Both this marketing site and every client
+site are commercial under that definition, so Hobby is not an option and Pro is
+$20/mo. Cloudflare Pages free carries no equivalent non-commercial clause and
+has no bandwidth cap on static assets.
+
+Cloudflare Pages free limits worth knowing: **100 projects per account**,
+500 builds/month, 100 custom domains per project, 20,000 files per site,
+25 MiB per asset. The 100-project cap is the real ceiling — well beyond the
+~37-client capacity limit above.
+
+### SMS: toll-free, not 10DLC
+
+Twilio and Telnyx both require a separate Brand *and* Campaign registration per
+end client for 10DLC — 20 registrations at 20 clients, with no bulk path.
+Toll-free needs only number verification and costs less (~$3.05 vs ~$5.16 per
+client). Use toll-free for missed-call text-back.
+
+### AI imagery cannot be copyrighted
+
+The Supreme Court denied cert in *Thaler v. Perlmutter* (2 March 2026), leaving
+in place the rule that purely AI-generated works carry no copyright. Practical
+consequences: a blanket *"all IP assigns to Client"* clause is unfulfillable for
+AI-generated images, and a competitor can lawfully lift them off a client's
+site. For client work, either use licensed stock (Unsplash/Pexels) or state in
+the agreement that AI-assisted imagery is provided without exclusivity. The
+AI-generated imagery on **this** site is fine — nobody is assigning it to anyone.
+
+### Caveat on the hour figures
+
+Build and support hours above are extrapolated, not measured. METR's RCT found
+experienced developers were 19% *slower* with AI while believing they were 20%
+faster — a 39-point perception gap. Track real hours across ten builds before
+treating the capacity math as settled.
+
