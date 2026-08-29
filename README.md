@@ -41,6 +41,40 @@ resolve the extensionless links.)
 
 ---
 
+## Domain & DNS (simplicitybuilds.com)
+
+DNS is managed **at GoDaddy**, not Vercel. This is deliberate: the mailbox
+(`hello@simplicitybuilds.com`) is GoDaddy-hosted, and switching nameservers to
+Vercel would drop the MX records and break email. Vercel's own docs warn that
+changing nameservers requires re-creating every record you want to keep.
+
+Records to set in GoDaddy → Domain → DNS:
+
+| Type  | Name | Value                                        |
+|-------|------|----------------------------------------------|
+| A     | `@`  | `76.76.21.21`                                |
+| CNAME | `www`| the project-specific value from Vercel        |
+
+Vercel now issues a per-project CNAME target (e.g. `d1d4….vercel-dns-017.com`)
+rather than a shared one — read the exact value from
+**Vercel → project → Settings → Domains** after adding the domain, and prefer it
+over anything written here.
+
+Email is set up separately under GoDaddy → Email & Office; that wizard adds the
+MX and SPF records. Send a test message to confirm delivery before relying on it.
+
+Verify the whole chain afterwards:
+
+```bash
+curl -sI https://simplicitybuilds.com | head -1        # expect 200, valid TLS
+curl -sI https://simplicitybuilds.com/assets/og-image.png | head -1
+```
+
+If the site ever moves hosts, `./set-site-url.sh https://newhost.com` rewrites
+every canonical, og:url, og:image and sitemap entry in one pass.
+
+---
+
 ## Deploy to Vercel
 
 1. Push this repo to GitHub (already set up).
