@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simplicity Builds — Premium websites for small business, from $49.99/mo</title>
+  <title>Small Business Websites from $49.99/mo — Simplicity Builds</title>
   <meta name="description" content="Hand-built, premium websites for small businesses. Launched in 7 days, hosted fast, no lock-in — from $49.99/month. A better deal than the $97/mo template agencies." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Simplicity Builds" />
@@ -378,6 +378,42 @@
     </section>
 
     <!-- ============ FAQ ============ -->
+    <!-- ===================== CLIENT REVIEWS =====================
+         This section is `hidden` because there are no reviews yet, and an
+         empty "What clients say" heading is worse than no heading at all.
+
+         TO ADD A REVIEW (two steps):
+           1. Paste one <figure class="review"> block below, filled in from
+              the email the review arrived in.
+           2. Delete the word `hidden` from the <section> tag.
+
+         Never write one of these yourself. A testimonial you invented is a
+         fabricated endorsement of a real business, and the first client who
+         reads it will know it wasn't them.
+
+         TEMPLATE — copy, don't edit in place:
+
+         <figure class="review">
+           <div class="stars" aria-label="5 out of 5">★★★★★</div>
+           <blockquote><p>Their exact words, unedited.</p></blockquote>
+           <figcaption><strong>Their Name</strong><span>Their Business</span></figcaption>
+         </figure>
+
+         Once at least one review is live, add Review/AggregateRating JSON-LD
+         so Google can show stars — but ONLY then. Rating markup with nothing
+         visible on the page to back it up is a structured-data violation and
+         gets rich results pulled sitewide.
+         ========================================================== -->
+    <section class="section-tight" id="reviews" hidden>
+      <div class="container">
+        <span class="eyebrow reveal">In their words</span>
+        <h2 class="mt-1 reveal">What clients say.</h2>
+        <div class="review-grid mt-3">
+          <!-- review blocks go here -->
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="container narrow">
         <div class="section-head center reveal">
@@ -422,21 +458,21 @@
           <p>Premium, hand-built websites for small businesses. Launched in a week. Hosted, maintained, and owned by you.</p>
         </div>
         <div class="footer-col">
-          <h4>Company</h4>
+          <h2>Company</h2>
           <a href="/about">About</a>
           <a href="/work">Our work</a>
           <a href="/services">Websites</a><a href="/development">Development</a>
           <a href="/contact">Contact</a>
         </div>
         <div class="footer-col">
-          <h4>Plans</h4>
+          <h2>Plans</h2>
           <a href="/pricing">Pricing</a>
           <a href="/pricing#addons">Add-ons</a>
           <a href="/pricing#own-it">One-time build</a>
           <a href="/contact">Get a quote</a>
         </div>
         <div class="footer-col">
-          <h4>Get started</h4>
+          <h2>Get started</h2>
           <a href="/contact">Book a call</a>
           <a href="/contact">Start my site</a>
           <a href="mailto:team@simplicitybuilds.com">team@simplicitybuilds.com</a>
