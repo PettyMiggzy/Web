@@ -26,27 +26,60 @@ bad()  { printf '  %sFAIL%s  %s\n' "$c_bad"  "$c_off" "$1"; FAIL=1; }
 warn() { printf '  %sWARN%s  %s\n' "$c_warn" "$c_off" "$1"; WARN=1; }
 note() { printf '        %s%s%s\n' "$c_dim" "$1" "$c_off"; }
 
+# --- how we'll resolve ----------------------------------------------------
+# Ordered by what a plain server actually has. dig is best when present, but
+# it isn't installed on a stock Ubuntu image; python3 always is. Requiring
+# node would mean this can't run on the very boxes you'd want to check from.
+command -v curl >/dev/null 2>&1 || {
+  echo "check-dns.sh needs curl. Install it:  apt-get install -y curl" >&2; exit 2; }
+
+if command -v dig >/dev/null 2>&1; then          RESOLVER=dig
+elif command -v python3 >/dev/null 2>&1; then    RESOLVER=python3
+elif command -v node >/dev/null 2>&1; then       RESOLVER=node
+else
+  echo "check-dns.sh needs one of: dig, python3, or node — to read DNS answers." >&2
+  echo "  apt-get install -y dnsutils      # or python3" >&2
+  exit 2
+fi
+
+# Strip a JSON DoH response down to one answer per line.
+_parse() {
+  case "$RESOLVER" in
+    python3) python3 -c '
+import json,sys
+try: d=json.load(sys.stdin)
+except Exception: sys.exit(1)
+for a in d.get("Answer",[]):
+    print(str(a.get("data","")).strip("\""))
+' ;;
+    node) node -e '
+let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
+  try{ (JSON.parse(s).Answer||[]).forEach(a=>console.log(String(a.data).replace(/^"|"$/g,""))) }
+  catch(e){ process.exit(1) }});' ;;
+  esac
+}
+
 # Resolve one record type. Prints one answer per line, empty if none.
-# Cloudflare and Google are queried in turn so a single resolver hiccup
-# doesn't read as "the record is missing" — a false FAIL here would send
-# someone editing DNS that was already correct.
+# Two resolvers are tried in turn so a single hiccup doesn't read as "the
+# record is missing" — a false FAIL here would send someone editing DNS
+# that was already correct.
 resolve() {
   local name="$1" type="$2" out
+  if [ "$RESOLVER" = dig ]; then
+    # @resolver explicitly: the box's own /etc/resolv.conf may point at a
+    # caching resolver still holding records you changed minutes ago.
+    for ns in 1.1.1.1 8.8.8.8; do
+      out=$(dig +short +time=5 +tries=1 "$type" "$name" "@$ns" 2>/dev/null) || continue
+      [ -n "$out" ] && { printf '%s\n' "$out" | sed 's/^"//;s/"$//'; return 0; }
+    done
+    return 0
+  fi
   for endpoint in \
     "https://cloudflare-dns.com/dns-query" \
     "https://dns.google/resolve"; do
     out=$(curl -sf --max-time 12 -H 'accept: application/dns-json' \
       "${endpoint}?name=${name}&type=${type}" 2>/dev/null) || continue
-    printf '%s' "$out" | node -e '
-      let s="";
-      process.stdin.on("data", d => s += d).on("end", () => {
-        try {
-          const j = JSON.parse(s);
-          (j.Answer || [])
-            .filter(a => a.type !== 5 || "'"$type"'" === "CNAME")
-            .forEach(a => console.log(String(a.data).replace(/^"|"$/g, "")));
-        } catch (e) { /* fall through to the next resolver */ }
-      });' && return 0
+    printf '%s' "$out" | _parse && return 0
   done
   return 0
 }
