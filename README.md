@@ -253,6 +253,20 @@ tells the visitor plainly to email instead. That fallback is deliberate: a form
 that silently swallows a lead while showing a success message is worse than one
 that admits it is offline.
 
+**How it submits.** Over `fetch`, so the visitor gets an inline thank-you and
+stays on the site rather than being handed to the provider's own thank-you
+page. The `action` and `method` are still on the `<form>`, so with JS disabled
+it posts natively and the lead still arrives — the script is an enhancement,
+never the only path.
+
+Deliberately **no** `@formspree/ajax`. It would be the only third-party script
+on the site, for behaviour that is ~50 lines against an API the codebase
+already calls the same way elsewhere. Every failure mode is covered instead:
+provider validation errors are surfaced verbatim, a network failure says so and
+offers the mailbox, and neither ever renders as success. Error text from the
+provider is written with `textContent` — verified a hostile response injects
+nothing (0 dialogs, 0 elements, shown as literal text).
+
 ---
 
 ## Rename the brand (once you've chosen a name)

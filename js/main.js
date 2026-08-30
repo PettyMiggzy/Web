@@ -205,24 +205,81 @@
     });
   }
 
-  /* ---- Contact form (front-end validation + friendly submit) ---- */
+  /* ---- Contact form ----
+     Submits over fetch so the visitor stays on the page instead of being
+     handed off to the form provider's thank-you screen. The form keeps its
+     action and method, so with JS off it still posts natively and the lead
+     still arrives — this is an enhancement, not the only path. */
   const form = document.querySelector("form[data-contact]");
   if (form) {
+    const status = form.querySelector(".form-status");
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    // Built as nodes rather than innerHTML: part of this text reflects a
+    // server response, and none of it needs to be markup.
+    const say = (text, color, withEmail) => {
+      if (!status) return;
+      status.textContent = text;
+      if (withEmail) {
+        const a = document.createElement("a");
+        a.href = "mailto:team@simplicitybuilds.com";
+        a.textContent = "team@simplicitybuilds.com";
+        a.style.textDecoration = "underline";
+        status.append(" ", a, ".");
+      }
+      status.style.color = color;
+    };
+
+    const OFFLINE = "Our form is briefly offline — please email us directly at";
+
     form.addEventListener("submit", (e) => {
-      // If no real endpoint is wired yet, prevent default and route to email
-      // instead — never pretend a lost submission succeeded.
       const action = form.getAttribute("action") || "";
+
+      // No real endpoint wired: route to email rather than pretend a lost
+      // submission succeeded.
       if (action.includes("YOUR_FORM_ID") || action === "#") {
         e.preventDefault();
-        const status = form.querySelector(".form-status");
-        if (status) {
-          status.innerHTML =
-            'Our form is briefly offline — please email us directly at ' +
-            '<a href="mailto:team@simplicitybuilds.com" style="text-decoration:underline;">team@simplicitybuilds.com</a> ' +
-            "and we’ll reply within one business day.";
-          status.style.color = "var(--accent-2)";
-        }
+        say(OFFLINE, "var(--accent-2)", true);
+        return;
       }
+
+      // Without fetch, let the browser post natively — that path still works.
+      if (!window.fetch) return;
+
+      e.preventDefault();
+      if (submitBtn) submitBtn.disabled = true;
+      say("Sending…", "var(--text-mute)");
+
+      fetch(action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      })
+        .then((r) => r.json().catch(() => ({})).then((body) => ({ ok: r.ok, body })))
+        .then(({ ok, body }) => {
+          if (ok) {
+            form.reset();
+            say("Thanks — that’s with us. We’ll reply within one business day.",
+                "var(--accent)");
+            if (submitBtn) submitBtn.textContent = "Sent";
+            return;
+          }
+          // Formspree returns field-level errors; surface the first one
+          // plainly rather than a generic failure nobody can act on.
+          const first =
+            body && Array.isArray(body.errors) && body.errors.length
+              ? body.errors[0].message
+              : null;
+          say(first ? "Couldn’t send: " + first
+                    : "Something went wrong sending that. Please email us at",
+              "var(--accent-2)", !first);
+          if (submitBtn) submitBtn.disabled = false;
+        })
+        .catch(() => {
+          // Network failure. Never show success for a lead that didn't land.
+          say(OFFLINE, "var(--accent-2)", true);
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 })();
