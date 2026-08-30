@@ -236,17 +236,17 @@ below work.
 accepted end to end (`{"ok":true}`, HTTP 200). Leads arrive at the address
 configured in the Formspree dashboard.
 
-To change providers or add the phone number later:
+To change providers:
 
 ```bash
-./activate-contact.sh <formspree_id>                              # form only
-./activate-contact.sh <formspree_id> "+15551234567" "(555) 123-4567"   # + phone
+./activate-contact.sh <formspree_id>
 ```
 
-The phone arguments are optional and must be given **both or neither** — one
-without the other produces a link that displays one number and dials another.
-Until a real number is supplied the phone links stay hidden by CSS, so a
-`PHONE_..._PLACEHOLDER` can never reach a visitor.
+**There is no phone number on this site, by design** — the business runs on
+email. The `tel:` markup and its CSS were removed entirely rather than left
+hidden, so no placeholder number can surface if a stylesheet is ever edited.
+`activate-contact.sh` now rejects phone arguments instead of accepting them
+and silently doing nothing. To reintroduce a phone, add the markup first.
 
 If the endpoint is ever reset to `YOUR_FORM_ID`, the form stops submitting and
 tells the visitor plainly to email instead. That fallback is deliberate: a form

@@ -244,12 +244,6 @@ section { padding-block: var(--pad-section); }
 
 /* Click-to-call. Ships hidden so a placeholder number never goes live —
    ./activate-contact.sh swaps in the real number and reveals it. */
-.phone-link, .footer-col .phone-link, .nav-cta .phone-link { display: none; } /* phone */
-.phone-link { align-items: center; gap: .45rem; font-size: var(--fs-sm); font-weight: 600; color: var(--text); white-space: nowrap; transition: color .25s; }
-.phone-link svg { width: 16px; height: 16px; color: var(--accent-2); }
-.phone-link:hover { color: #fff; }
-.footer-col .phone-link { padding: .35rem 0; color: var(--text-soft); }
-@media (max-width: 760px) { .nav-cta .phone-link { font-size: .85rem; } }
 
 .mobile-menu { display: none; }
 .nav-toggle { display: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
