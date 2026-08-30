@@ -275,6 +275,28 @@ nothing (0 dialogs, 0 elements, shown as literal text).
 
 ---
 
+## Showing reviews
+
+`index.html` has a `#reviews` section between the promise section and the FAQ,
+which is where a hesitant reader actually is. It ships with the `hidden`
+attribute because there are no reviews yet — an empty "What clients say"
+heading is worse than no heading.
+
+Adding one is two steps, both documented in a comment inside the section:
+paste a `<figure class="review">` block, then delete `hidden`.
+
+**Never write one yourself.** A testimonial you invented is a fabricated
+endorsement of a real business, and the first client who reads it will know it
+was not them.
+
+Reviews are plain HTML rather than JS-rendered, so they are indexable. Once at
+least one is live you can add `Review` / `AggregateRating` JSON-LD to get stars
+in search results — but **only then**. Rating markup with nothing visible on
+the page to support it is a structured-data violation and gets rich results
+pulled across the whole site.
+
+---
+
 ## Collecting reviews
 
 `/review` is the page to send a client once their site has been running a
