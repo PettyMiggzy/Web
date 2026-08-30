@@ -1,0 +1,28 @@
+{
+  "name": "Still Point Studio", "slug": "sample-wellness", "vertical": "wellness", "spec": true,
+  "titleSuffix": "Yoga & movement", "phone": "(555) 442-8890",
+  "address": "12 Alder Court, Asheville, NC",
+  "headline": "Somewhere to put the day down.",
+  "subhead": "Small classes, unhurried teaching, and a room that stays quiet. Beginners are genuinely welcome here.",
+  "heroChip": "New term now booking",
+  "highlights": ["Classes capped at twelve", "All levels welcome", "First class free"],
+  "stats": [
+    {"value":"12","label":"students per class"},
+    {"value":"4.9/5","label":"student rating"},
+    {"value":"6 days","label":"a week"}
+  ],
+  "services": [
+    {"icon":"🧘","name":"Slow flow","text":"Gentle, breath-led movement. The best place to start.","price":"$18 drop-in"},
+    {"icon":"🌙","name":"Restorative","text":"Supported poses held long, with bolsters and blankets provided."},
+    {"icon":"💪","name":"Strength & mobility","text":"Building steadiness and range without rushing it."},
+    {"icon":"👥","name":"Private sessions","text":"One-to-one work around an injury or a specific goal.","price":"$70"}
+  ],
+  "aboutText": "We opened because the studios nearby all felt like gyms. Ours has wooden floors, no mirrors, and teachers who learn your name in the first week.",
+  "reasons": ["Mats, blocks and bolsters all provided","No membership or lock-in","Teachers with 500+ hour training","First class is on us"],
+  "hours": [
+    {"day":"Mon–Thu","time":"6:30am – 8:30pm"},
+    {"day":"Friday","time":"6:30am – 6:00pm"},
+    {"day":"Saturday","time":"8:00am – 1:00pm"},
+    {"day":"Sunday","time":"Closed"}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "North Goods Co.", "slug": "sample-retail", "vertical": "retail", "spec": true,
+  "titleSuffix": "General store & workshop", "phone": "(555) 233-7781",
+  "address": "9 Harbour Street, Camden, ME",
+  "headline": "Things made to outlast you.",
+  "subhead": "A small shop of tools, textiles and kitchen goods chosen for how they wear in, not how they photograph.",
+  "heroChip": "Independent since 2016",
+  "highlights": ["Repairs, not replacements", "Stocked from small makers", "Gift wrapping free"],
+  "stats": [
+    {"value":"120+","label":"independent makers"},
+    {"value":"4.9/5","label":"customer rating"},
+    {"value":"Since 2016","label":"on Harbour Street"}
+  ],
+  "services": [
+    {"icon":"🔨","name":"Tools & hardware","text":"Hand tools from makers still forging their own steel."},
+    {"icon":"🧺","name":"Home & kitchen","text":"Cast iron, linen and enamelware built for daily use."},
+    {"icon":"🧵","name":"Textiles","text":"Blankets and aprons woven in small runs, mostly within the state."},
+    {"icon":"🎁","name":"Gifts","text":"We'll help you find something and wrap it while you wait."}
+  ],
+  "aboutText": "We buy from people we've met. Everything in the shop has been used by one of us long enough to know how it holds up after a year, and we'll tell you honestly when the cheaper option is the better one.",
+  "reasons": ["Everything tested by us before it's stocked","Repairs offered on what we sell","Hold anything for 48 hours, no deposit","Honest answers, even when it costs us a sale"],
+  "hours": [
+    {"day":"Tue–Fri","time":"10:00am – 6:00pm"},
+    {"day":"Saturday","time":"9:00am – 5:00pm"},
+    {"day":"Sun–Mon","time":"Closed"}
+  ]
+}

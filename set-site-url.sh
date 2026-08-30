@@ -21,9 +21,13 @@ if [ -z "$CURRENT" ]; then
   exit 1
 fi
 
+# & means "the whole match" in a sed replacement — escape it, or a URL
+# containing & silently expands to the old URL instead.
+NEW_E=$(printf '%s' "$NEW" | sed -e 's/[\\&|]/\\&/g')
+
 echo "Rewriting $CURRENT  ->  $NEW"
 grep -rl "$CURRENT" --include="*.html" --include="*.xml" --include="*.txt" . \
-  | xargs sed -i "s|$CURRENT|$NEW|g"
+  | xargs sed -i "s|$CURRENT|$NEW_E|g"
 
 echo "Done. Verify with:"
 echo "  grep -rho 'https://[a-z0-9.-]*' --include='*.html' . | sort -u | head"

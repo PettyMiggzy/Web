@@ -14,15 +14,23 @@ if [ -z "$FORM_ID" ] || [ -z "$TEL_HREF" ] || [ -z "$TEL_DISPLAY" ]; then
   exit 1
 fi
 
+# In a sed replacement, & means "the whole match" and \ escapes. Without this,
+# a value like "A&B" silently expands to the search text — the script would
+# report success while writing something different. Escape before substituting.
+sed_rhs() { printf '%s' "$1" | sed -e 's/[\\&|]/\\&/g'; }
+FORM_ID_E=$(sed_rhs "$FORM_ID")
+TEL_HREF_E=$(sed_rhs "$TEL_HREF")
+TEL_DISPLAY_E=$(sed_rhs "$TEL_DISPLAY")
+
 # 1. Wire the form endpoint
-sed -i "s|https://formspree.io/f/YOUR_FORM_ID|https://formspree.io/f/${FORM_ID}|g" contact.html
+sed -i "s|https://formspree.io/f/YOUR_FORM_ID|https://formspree.io/f/${FORM_ID_E}|g" contact.html
 echo "form endpoint  -> https://formspree.io/f/${FORM_ID}"
 
 # 2. Swap every phone placeholder for the real number
 grep -rl 'PHONE_HREF_PLACEHOLDER' --include="*.html" . \
-  | xargs sed -i "s|PHONE_HREF_PLACEHOLDER|${TEL_HREF}|g"
+  | xargs sed -i "s|PHONE_HREF_PLACEHOLDER|${TEL_HREF_E}|g"
 grep -rl 'PHONE_DISPLAY_PLACEHOLDER' --include="*.html" . \
-  | xargs sed -i "s|PHONE_DISPLAY_PLACEHOLDER|${TEL_DISPLAY}|g"
+  | xargs sed -i "s|PHONE_DISPLAY_PLACEHOLDER|${TEL_DISPLAY_E}|g"
 echo "phone number   -> ${TEL_DISPLAY} (${TEL_HREF})"
 
 # 3. Reveal the phone links, which ship hidden so no fake number ever goes live

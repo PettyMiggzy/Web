@@ -1,0 +1,24 @@
+{
+  "name": "Ironclad Plumbing", "slug": "sample-trades", "vertical": "trades", "spec": true,
+  "titleSuffix": "Emergency & repair plumbing", "phone": "(555) 847-2100",
+  "address": "1420 Foundry Rd, Springfield, IL",
+  "headline": "Plumbing done right, the first time.",
+  "subhead": "Licensed, insured, and on time — with upfront pricing and no surprises. Serving the metro area for over fifteen years.",
+  "highlights": ["Licensed & insured", "Upfront flat pricing", "Same-day service"],
+  "stats": [
+    {"value":"15+","label":"years in business"},
+    {"value":"4.9/5","label":"customer rating"},
+    {"value":"60 min","label":"average response"},
+    {"value":"100%","label":"satisfaction guarantee"}
+  ],
+  "services": [
+    {"icon":"🚿","name":"Leaks & repairs","text":"Dripping taps to burst pipes — found fast and fixed properly.","price":"from $89"},
+    {"icon":"🔥","name":"Water heaters","text":"Repair, replacement and servicing for tanks and tankless systems."},
+    {"icon":"🚽","name":"Drains & sewers","text":"Camera inspection and clearing without tearing up your yard."},
+    {"icon":"🛠","name":"Bathroom fit-outs","text":"Full plumbing for renovations, done to code and on schedule."},
+    {"icon":"⚠️","name":"Emergency call-outs","text":"Burst pipe at 2am? We answer the phone.","price":"24/7"},
+    {"icon":"📋","name":"Inspections","text":"Pre-purchase and annual checks with a written report."}
+  ],
+  "aboutText": "We started as a two-van outfit and never lost the habit of picking up the phone ourselves. Every job gets a fixed price before we start, and the person who quotes it is the person who does it.",
+  "reasons": ["Fixed price agreed before any work begins","The same crew, every visit","We tidy up properly before we leave","Workmanship guaranteed for twelve months"]
+}

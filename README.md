@@ -41,6 +41,124 @@ resolve the extensionless links.)
 
 ---
 
+## The site factory (templates/)
+
+Five vertical templates behind one engine. A profile JSON goes in, a single
+self-contained HTML file comes out — no external assets, no broken paths, and
+a spec site can be handed over as one file.
+
+```bash
+node new-site.js --list                      # show verticals
+cp clients/_example.json clients/joes.json   # fill from their Google Business Profile
+node new-site.js clients/joes.json           # -> dist/joes/index.html
+node new-site.js clients/*.json              # rebuild everything
+```
+
+| Vertical | For |
+|---|---|
+| `trades` | Plumbing, HVAC, electrical, roofing, landscaping |
+| `cafe` | Cafés, bakeries, restaurants |
+| `wellness` | Yoga, massage, salons, spas |
+| `retail` | Shops, boutiques, galleries |
+| `professional` | Dental, legal, accounting, clinics |
+
+Each vertical is a token set plus copy defaults in `templates/verticals/`. The
+stylesheet in `templates/theme.js` never changes — that is what makes a build
+take minutes instead of hours. To add a sixth vertical, copy a file in
+`verticals/`, change the tokens, and register it in `templates/build.js`.
+
+**Profile fields.** `name`, `vertical`, `headline` and `subhead` are required;
+everything else falls back to the vertical's defaults. Set `spec: true` for a
+prospecting site — that adds the "sample site" disclosure bar and forces
+`noindex,nofollow` so an unsold site never lands in Google. Set `leadEndpoint`
+to a form URL to make the contact form live; leave it empty and the form tells
+the visitor plainly that it is not connected rather than faking a success
+message.
+
+**Deliberately no images.** Templates ship with typographic and gradient
+treatments only. AI-generated imagery carries no copyright (see BRAND.md), so
+it cannot be assigned to a client under an IP-transfer clause — use the
+client's own photos, or licensed stock, on anything you sell.
+
+Every template is verified on each build: 16 contrast pairs per vertical at
+WCAG AA, one `h1`, four landmarks, zero dead links, labelled form fields, valid
+JSON-LD, and no horizontal overflow down to 344px.
+
+---
+
+## Spec sites & hosting (Cloudflare Pages)
+
+**Hosting note.** Vercel's Fair Use Guidelines restrict Hobby to
+"non-commercial personal use only", and define commercial usage to include
+"advertising the sale of a product or service" and "receiving payment to
+create, update, or host the site". Both this site and every client site are
+commercial under that definition, so the options are Vercel Pro ($20/mo) or
+Cloudflare Pages (free, no equivalent clause). `_headers` and `_redirects`
+port the `vercel.json` rules to Pages; both configs can coexist.
+
+**Spec sites** are previews built for one named prospect and sent to them
+directly — never a public free tier, never listed on the pricing page.
+
+```bash
+cp clients/_example.json clients/joes-plumbing.json   # fill from their GBP
+./deploy-spec.sh --build-only                          # inspect spec/sites/
+./deploy-spec.sh                                       # publish
+#   -> https://joes-plumbing.simplicitybuilds.com
+```
+
+All previews live in **one** Pages project (`spec/`) behind a single wildcard
+custom domain, so prospect fifty needs no new project and no new DNS record.
+`spec/functions/_middleware.js` maps `<slug>.simplicitybuilds.com` to
+`/sites/<slug>/`. It refuses to rewrite the apex, `www`, mail-related
+subdomains, deeper nestings, and any malformed slug — so it can never shadow
+the marketing site or the mailbox. Unknown slugs get a branded 404.
+
+Spec sites are noindexed three times over: `noindex,nofollow` in the template,
+an `X-Robots-Tag` header on every response, and a blanket `Disallow: /` in
+`spec/robots.txt`. An unsold preview of someone's real business must never
+reach Google.
+
+One-time setup: `npm i -g wrangler && wrangler login`, create a Pages project
+named `simplicity-spec`, add `*.simplicitybuilds.com` as a custom domain, then
+add a proxied `CNAME * -> simplicity-spec.pages.dev` in GoDaddy DNS. Free-tier
+ceilings that matter: 500 builds/month and 100 projects (this design uses one).
+
+---
+
+## Domain & DNS (simplicitybuilds.com)
+
+DNS is managed **at GoDaddy**, not Vercel. This is deliberate: the mailbox
+(`hello@simplicitybuilds.com`) is GoDaddy-hosted, and switching nameservers to
+Vercel would drop the MX records and break email. Vercel's own docs warn that
+changing nameservers requires re-creating every record you want to keep.
+
+Records to set in GoDaddy → Domain → DNS:
+
+| Type  | Name | Value                                        |
+|-------|------|----------------------------------------------|
+| A     | `@`  | `76.76.21.21`                                |
+| CNAME | `www`| the project-specific value from Vercel        |
+
+Vercel now issues a per-project CNAME target (e.g. `d1d4….vercel-dns-017.com`)
+rather than a shared one — read the exact value from
+**Vercel → project → Settings → Domains** after adding the domain, and prefer it
+over anything written here.
+
+Email is set up separately under GoDaddy → Email & Office; that wizard adds the
+MX and SPF records. Send a test message to confirm delivery before relying on it.
+
+Verify the whole chain afterwards:
+
+```bash
+curl -sI https://simplicitybuilds.com | head -1        # expect 200, valid TLS
+curl -sI https://simplicitybuilds.com/assets/og-image.png | head -1
+```
+
+If the site ever moves hosts, `./set-site-url.sh https://newhost.com` rewrites
+every canonical, og:url, og:image and sitemap entry in one pass.
+
+---
+
 ## Deploy to Vercel
 
 1. Push this repo to GitHub (already set up).
