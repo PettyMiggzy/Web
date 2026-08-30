@@ -107,6 +107,13 @@
           ? "Showing annual prices — two months free, setup fee waived"
           : "Showing monthly prices";
       }
+      // Re-point the plan buttons at the matching Stripe link. Without this
+      // the page would show annual pricing while the button still charged
+      // monthly — the visitor would be billed something other than the number
+      // they were looking at.
+      if (window.sbCheckout && typeof window.sbCheckout.apply === "function") {
+        window.sbCheckout.apply(annual);
+      }
     };
     priceSwitch.addEventListener("click", () => {
       setMode(priceSwitch.getAttribute("aria-checked") !== "true");

@@ -275,6 +275,39 @@ nothing (0 dialogs, 0 elements, shown as literal text).
 
 ---
 
+## Taking payment (Stripe)
+
+Stripe **Payment Links** — no secret key, no server, no card data touching our
+code. Each plan button is an anchor to Stripe's hosted checkout, which handles
+subscriptions, receipts, failed-payment retries and the customer portal.
+
+`js/checkout.js` holds every link in one place, split TEST / LIVE. **Test links
+are used only on localhost.** A test link served to a real visitor would walk
+them through a checkout that cannot charge them, so the hostname decides, not a
+flag someone can forget to flip. Any plan without a live URL keeps its
+`/contact` href — an unconfigured plan sends someone to a human, never to a
+dead or wrong-priced checkout.
+
+The monthly/annual toggle re-points the buttons as well as the displayed price.
+Those two must move together: showing an annual figure beside a button that
+charges monthly bills the visitor something other than the number they were
+reading.
+
+Notes from the Stripe implementation planner:
+
+- `managed_payments: {enabled: false}` on every link. Managed Payments is on by
+  default on the account, but it requires a digital-goods tax code, and
+  `txcd_10701200` (Website Design) is a **service** — Stripe rejects the link
+  otherwise.
+- **`automatic_tax` stays off.** With no tax registration, enabling it means
+  Stripe collects nothing while you believe tax is handled. The product tax
+  code instead switches on free threshold monitoring, which warns you before
+  you cross into owing tax anywhere.
+- No `payment_method_types` — omitting it enables dynamic payment methods,
+  which pick the highest-converting options per customer.
+
+---
+
 ## Running paid ads
 
 `js/analytics.js` holds every tracking ID in one `CONFIG` block. **Empty values
