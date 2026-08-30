@@ -496,7 +496,10 @@ section { padding-block: var(--pad-section); }
 
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line); padding-block: clamp(3rem,2rem+3vw,4.5rem) 2.5rem; margin-top: 2rem; }
-.footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2rem; }
+.footer-top { display: grid; grid-template-columns: minmax(0,1.4fr) repeat(3, minmax(0,1fr)); gap: 2rem; }
+/* The footer holds a long unbreakable email address; let it wrap rather than
+   force the page wide. */
+.footer-col a, .footer-brand p { overflow-wrap: anywhere; }
 .footer-brand p { font-size: var(--fs-sm); max-width: 34ch; margin-top: 1rem; }
 .footer-col h4 { font-family: var(--font-sans); font-size: var(--fs-xs); letter-spacing: .12em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 1rem; font-weight: 700; }
 .footer-col a { display: block; padding: .35rem 0; color: var(--text-soft); font-size: var(--fs-sm); transition: color .2s; }
@@ -529,10 +532,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
   .cols-4 { grid-template-columns: repeat(2, 1fr); }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 2.4rem; }
+  .footer-top { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 2.4rem; }
   .price-grid { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; }
   .price-card.featured { order: -1; }
   .split { grid-template-columns: 1fr; }
+}
+@media (max-width: 460px) {
+  .footer-top { grid-template-columns: minmax(0,1fr); gap: 1.8rem; }
 }
 @media (max-width: 760px) {
   .nav-links, .nav-cta .btn-ghost { display: none; }
@@ -563,3 +569,25 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .cols-4 { grid-template-columns: 1fr; }
   .trust-bar { gap: .8rem 1.4rem; }
 }
+
+/* ---- Review page: star rating + consent ---- */
+/* Stars are laid out in reverse DOM order (5 first) so that CSS can light up
+   the chosen star and everything before it using the sibling combinator —
+   there is no previous-sibling selector to do it the other way round. */
+.label-like { display: block; font-size: var(--fs-sm); font-weight: 600; color: var(--text-soft); margin-bottom: .5rem; }
+.rating { display: inline-flex; flex-direction: row-reverse; justify-content: flex-end; gap: .15rem; }
+.rating input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.rating label {
+  font-size: 2rem; line-height: 1; cursor: pointer; color: var(--line);
+  transition: color .15s, transform .15s; padding: 0 .1rem;
+}
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input:checked ~ label { color: #f5b544; }
+.rating label:hover { transform: scale(1.12); }
+/* Keyboard users must be able to see which star has focus. */
+.rating input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.consent { display: flex; gap: .7rem; align-items: flex-start; cursor: pointer; font-size: var(--fs-sm); color: var(--text-soft); }
+.consent input { margin-top: .2rem; width: 1.05rem; height: 1.05rem; accent-color: var(--accent); flex: none; cursor: pointer; }
+.consent span { line-height: 1.5; }

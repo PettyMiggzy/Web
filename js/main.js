@@ -217,10 +217,10 @@
      handed off to the form provider's thank-you screen. The form keeps its
      action and method, so with JS off it still posts natively and the lead
      still arrives — this is an enhancement, not the only path. */
-  const form = document.querySelector("form[data-contact]");
-  if (form) {
+  document.querySelectorAll("form[data-contact], form[data-review]").forEach((form) => {
     const status = form.querySelector(".form-status");
     const submitBtn = form.querySelector('button[type="submit"]');
+    const isReview = form.hasAttribute("data-review");
 
     // Built as nodes rather than innerHTML: part of this text reflects a
     // server response, and none of it needs to be markup.
@@ -269,7 +269,7 @@
             // the lead. Firing on click instead would count every abandoned
             // and failed submit, and the ad platform would optimise toward
             // traffic that never becomes a customer.
-            if (typeof window.sbTrack === "function") {
+            if (!isReview && typeof window.sbTrack === "function") {
               const plan = (form.querySelector("#plan") || {}).value || "";
               window.sbTrack("lead", {
                 plan: plan,
@@ -277,8 +277,12 @@
               });
             }
             form.reset();
-            say("Thanks — that’s with us. We’ll reply within one business day.",
-                "var(--accent)");
+            say(
+              isReview
+                ? "Thank you — that means a lot. We read every one."
+                : "Thanks — that’s with us. We’ll reply within one business day.",
+              "var(--accent)"
+            );
             if (submitBtn) submitBtn.textContent = "Sent";
             return;
           }
@@ -294,10 +298,11 @@
           if (submitBtn) submitBtn.disabled = false;
         })
         .catch(() => {
-          // Network failure. Never show success for a lead that didn't land.
+          // Network failure. Never show success for a submission that didn't
+          // land — true for a review as much as for a lead.
           say(OFFLINE, "var(--accent-2)", true);
           if (submitBtn) submitBtn.disabled = false;
         });
     });
-  }
+  });
 })();
