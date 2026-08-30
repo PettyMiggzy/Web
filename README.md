@@ -88,8 +88,14 @@ JSON-LD, and no horizontal overflow down to 344px.
 
 ## Domain checking (Porkbun)
 
-`functions/api/domain-check.js` is a Cloudflare Pages Function that checks
-domain availability and returns **at-cost** registrar pricing. The contact page
+`lib/domain-check.js` holds the logic; `api/domain-check.js` (Vercel) and
+`functions/api/domain-check.js` (Cloudflare) are thin adapters over it. Both
+exist because **Vercel runs `api/` and ignores `functions/`, and Cloudflare
+does the reverse** — shipping only the Cloudflare one meant the endpoint
+404'd in production while passing every local test. Keeping the logic in one
+module is what stops a fix reaching one host and missing the other.
+
+It checks domain availability and returns **at-cost** registrar pricing. The contact page
 uses it as step one of onboarding, because "go buy a domain" is the single
 biggest reason a project stalls for weeks.
 
