@@ -170,31 +170,46 @@ ceilings that matter: 500 builds/month and 100 projects (this design uses one).
 ## Domain & DNS (simplicitybuilds.com)
 
 DNS is managed **at GoDaddy**, not Vercel. This is deliberate: the mailbox
-(`hello@simplicitybuilds.com`) is GoDaddy-hosted, and switching nameservers to
+(`team@simplicitybuilds.com`) is GoDaddy-hosted, and switching nameservers to
 Vercel would drop the MX records and break email. Vercel's own docs warn that
-changing nameservers requires re-creating every record you want to keep.
+changing nameservers requires re-creating every record you want to keep. **Never
+change the nameservers off `ns45/ns46.domaincontrol.com`.**
 
-Records to set in GoDaddy → Domain → DNS:
+Web DNS is **already live** (verified Aug 2026):
 
-| Type  | Name | Value                                        |
-|-------|------|----------------------------------------------|
-| A     | `@`  | `76.76.21.21`                                |
-| CNAME | `www`| the project-specific value from Vercel        |
+| Record | Value              | Note                                    |
+|--------|--------------------|-----------------------------------------|
+| NS     | `*.domaincontrol.com` | GoDaddy — leave alone                |
+| A `@`  | `216.150.1.1`      | Vercel anycast                          |
+| CNAME `www` | → apex        | apex 308-redirects to `www`             |
 
-Vercel now issues a per-project CNAME target (e.g. `d1d4….vercel-dns-017.com`)
-rather than a shared one — read the exact value from
-**Vercel → project → Settings → Domains** after adding the domain, and prefer it
-over anything written here.
+Note the redirect direction: the apex sends visitors to **www**, while every
+canonical in the HTML is written **without** www. Either set the apex as primary
+in **Vercel → Settings → Domains** (no code change, matches the HTML), or run
+`./set-site-url.sh https://www.simplicitybuilds.com` to rewrite the tags. Don't
+do both.
 
-Email is set up separately under GoDaddy → Email & Office; that wizard adds the
-MX and SPF records. Send a test message to confirm delivery before relying on it.
+### Mail
 
-Verify the whole chain afterwards:
+Mail runs on GoDaddy Email & Office. The wizard writes MX, SPF and DKIM
+automatically when the domain and mailbox are in the same GoDaddy account.
+
+**GoDaddy pre-seeds a `_dmarc` TXT record at `p=quarantine` before any mailbox
+exists.** That policy tells receivers to spam-file anything failing
+authentication — so between registering the domain and finishing the mail
+wizard, there is a window where SPF and DKIM don't exist yet and outbound mail
+can be silently quarantined. Verify all three legs before trusting the inbox;
+if SPF or DKIM is missing, drop DMARC to `p=none` until they resolve, then
+tighten it back.
+
+Verify the whole chain:
 
 ```bash
-curl -sI https://simplicitybuilds.com | head -1        # expect 200, valid TLS
-curl -sI https://simplicitybuilds.com/assets/og-image.png | head -1
+./check-dns.sh                 # web + MX/SPF/DKIM/DMARC, exit 1 if mail is broken
 ```
+
+Three PASSes (SPF, DKIM, DMARC) in Gmail's **Show original** on a real test
+message is the only proof that counts.
 
 If the site ever moves hosts, `./set-site-url.sh https://newhost.com` rewrites
 every canonical, og:url, og:image and sitemap entry in one pass.
@@ -232,7 +247,7 @@ of submitting.
 ## Rename the brand (once you've chosen a name)
 
 The brand name appears as the word **"Simplicity Builds"** and the email
-`hello@simplicitybuilds.com`. To rebrand:
+`team@simplicitybuilds.com`. To rebrand:
 
 ```bash
 # from the repo root — replace with your chosen name / domain

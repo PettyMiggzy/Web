@@ -218,7 +218,7 @@
         if (status) {
           status.innerHTML =
             'Our form is briefly offline — please email us directly at ' +
-            '<a href="mailto:hello@simplicitybuilds.com" style="text-decoration:underline;">hello@simplicitybuilds.com</a> ' +
+            '<a href="mailto:team@simplicitybuilds.com" style="text-decoration:underline;">team@simplicitybuilds.com</a> ' +
             "and we’ll reply within one business day.";
           status.style.color = "var(--accent-2)";
         }
