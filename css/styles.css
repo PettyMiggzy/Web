@@ -554,11 +554,31 @@ html.js .reveal.in { opacity: 1; transform: none; }
     background: rgba(6,6,12,.96); backdrop-filter: blur(20px);
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
     opacity: 0; visibility: hidden; transition: opacity .4s var(--ease), visibility .4s;
+    /* The menu must scroll itself. Opening it sets body{overflow:hidden}, so
+       if the links are taller than the viewport — a phone held sideways, or a
+       large accessibility text size — the ones past the fold become
+       unreachable with no way to scroll to them. */
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+    padding: 5.5rem 1rem 2rem; /* clears the fixed header row */
+  }
+  /* justify-content:center pushes overflowing content past the top edge, out
+     of reach. Once the content is taller than the box, stop centring it. */
+  @supports (justify-content: safe center) {
+    .mobile-menu { justify-content: safe center; }
   }
   .nav-open .mobile-menu { opacity: 1; visibility: visible; }
   .mobile-menu a { font-family: var(--font-display); font-size: 1.8rem; color: var(--text); }
   .mobile-menu a:hover { color: #fff; }
   .mobile-menu .btn { margin-top: 1rem; }
+  /* The header keeps its own CTA on mobile, but the open menu already shows
+     one — two identical buttons on screen reads as a rendering fault. */
+  .nav-open .nav-cta .btn { display: none; }
+  /* Short viewports (landscape) need the whole thing tightened or it cannot fit. */
+  @media (max-height: 520px) {
+    .mobile-menu { gap: .35rem; padding-top: 4.5rem; }
+    .mobile-menu a { font-size: 1.3rem; }
+    .mobile-menu .btn { margin-top: .5rem; }
+  }
   .cols-2, .cols-3 { grid-template-columns: 1fr; }
   .work-grid { grid-template-columns: 1fr; }
   .addon-grid { grid-template-columns: 1fr; gap: 0; }
