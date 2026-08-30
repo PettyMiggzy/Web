@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave a review — Simplicity Builds</title>
+  <meta name="description" content="Tell us how your website is working out. Reviews from real clients of Simplicity Builds." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Simplicity Builds" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0a0a12" />
+  <link rel="canonical" href="https://simplicitybuilds.com/review" />
+  <meta property="og:title" content="Leave a review — Simplicity Builds" />
+  <meta property="og:description" content="Tell us how your website is working out." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://simplicitybuilds.com/review" />
+  <meta property="og:image" content="https://simplicitybuilds.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Simplicity Builds — premium websites for small business" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Leave a review — Simplicity Builds" />
+  <meta name="twitter:description" content="Tell us how your website is working out." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/" class="brand" aria-label="Simplicity Builds — home">
+        <svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <defs><linearGradient id="bm" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#7c6cff"/><stop offset="0.5" stop-color="#9b7bff"/><stop offset="1" stop-color="#37d0e2"/></linearGradient></defs>
+          <path d="M32 12 C34 24 40 30 52 32 C40 34 34 40 32 52 C30 40 24 34 12 32 C24 30 30 24 32 12 Z" fill="url(#bm)"/>
+        </svg>
+        Simplicity Builds
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/">Home</a><a href="/services">Websites</a><a href="/development">Development</a><a href="/pricing">Pricing</a><a href="/work">Work</a><a href="/about">About</a>
+      </nav>
+      <div class="nav-cta"><a href="/pricing" class="btn btn-ghost">See pricing</a><a href="#quote" class="btn btn-primary">Get a quote</a></div>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="/">Home</a><a href="/services">Websites</a><a href="/development">Development</a><a href="/pricing">Pricing</a><a href="/work">Work</a><a href="/about">About</a>
+      <a href="#quote" class="btn btn-primary btn-lg">Get a quote</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="container">
+        <span class="pill reveal"><span class="dot"></span> Takes about a minute</span>
+        <h1 class="reveal d1">How’s the site working out?</h1>
+        <p class="lead reveal d2">If we built you something you’re happy with, a few honest words help more than anything else we could do. If we didn’t, tell us that instead — we’d rather fix it than be praised.</p>
+      </div>
+    </section>
+
+    <section class="section-tight" id="review" style="padding-top:1rem;">
+      <div class="container narrow">
+        <div class="panel reveal">
+          <form class="form" data-review action="https://formspree.io/f/mrpgbvny" method="POST">
+            <input type="hidden" name="_subject" value="New client review — Simplicity Builds" />
+            <input type="hidden" name="form_type" value="review" />
+
+            <div class="field">
+              <span class="label-like">How would you rate the work?</span>
+              <!-- A radio group rather than clickable stars: it works without
+                   JavaScript, it is reachable by keyboard, and a screen reader
+                   announces the actual choice instead of a decorative glyph. -->
+              <div class="rating" role="radiogroup" aria-label="Star rating">
+                <input type="radio" id="r5" name="rating" value="5" required /><label for="r5" title="5 out of 5">★<span class="visually-hidden">5 stars</span></label>
+                <input type="radio" id="r4" name="rating" value="4" /><label for="r4" title="4 out of 5">★<span class="visually-hidden">4 stars</span></label>
+                <input type="radio" id="r3" name="rating" value="3" /><label for="r3" title="3 out of 5">★<span class="visually-hidden">3 stars</span></label>
+                <input type="radio" id="r2" name="rating" value="2" /><label for="r2" title="2 out of 5">★<span class="visually-hidden">2 stars</span></label>
+                <input type="radio" id="r1" name="rating" value="1" /><label for="r1" title="1 out of 5">★<span class="visually-hidden">1 star</span></label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="rev-name">Your name</label>
+                <input id="rev-name" name="name" type="text" placeholder="Dale Wells" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="rev-business">Business name</label>
+                <input id="rev-business" name="business" type="text" placeholder="Wells Safety" autocomplete="organization" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="rev-email">Email</label>
+              <input id="rev-email" name="email" type="email" placeholder="you@yourbusiness.com" autocomplete="email" required />
+              <p class="form-note mt-1">Only so we can check the review is really from you. It is never published.</p>
+            </div>
+
+            <div class="field">
+              <label for="rev-message">Your review</label>
+              <textarea id="rev-message" name="review" required placeholder="What did you need, what did we build, and how has it gone since? Anything specific — how quickly it launched, whether the phone rings more — is worth more than &ldquo;great service&rdquo;."></textarea>
+            </div>
+
+            <div class="field">
+              <label class="consent">
+                <input type="checkbox" name="consent_to_publish" value="yes" />
+                <span>You may publish this review, with my name and business name, on your website.</span>
+              </label>
+              <p class="form-note mt-1">Leave this unticked and we’ll still read it — we just won’t quote you anywhere.</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Send review</button>
+            <p class="form-status form-note" role="status" aria-live="polite"></p>
+            <p class="form-note">Reviews are read by a person before anything goes on the site. We never edit words to change their meaning, and we never publish a review you haven’t ticked the box for. See our <a href="/privacy" style="text-decoration:underline;">privacy policy</a>.</p>
+          </form>
+        </div>
+
+        <div class="panel mt-3 reveal d2" style="padding:1.4rem;">
+          <p class="muted" style="font-size:var(--fs-sm);">Something wrong instead?</p>
+          <p class="mt-1">Don’t leave a bad review sitting there — email <a href="mailto:team@simplicitybuilds.com" class="accent">team@simplicitybuilds.com</a> and we’ll fix it. Edits are included in your plan, and there is no contract keeping you here if we can’t put it right.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand"><svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 12 C34 24 40 30 52 32 C40 34 34 40 32 52 C30 40 24 34 12 32 C24 30 30 24 32 12 Z" fill="url(#bm)"/></svg> Simplicity Builds</a>
+          <p>Premium, hand-built websites for small businesses. Launched in a week. Hosted, maintained, and owned by you.</p>
+        </div>
+        <div class="footer-col"><h4>Company</h4><a href="/about">About</a><a href="/work">Our work</a><a href="/services">Websites</a><a href="/development">Development</a><a href="/contact">Contact</a></div>
+        <div class="footer-col"><h4>Plans</h4><a href="/pricing">Pricing</a><a href="/pricing#addons">Add-ons</a><a href="/pricing#own-it">One-time build</a><a href="/contact">Get a quote</a></div>
+        <div class="footer-col"><h4>Get started</h4><a href="/contact">Book a call</a><a href="/contact">Start my site</a><a href="mailto:team@simplicitybuilds.com">team@simplicitybuilds.com</a>
+          </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Simplicity Builds. All rights reserved.</span>
+        <a class="footer-legal" href="/privacy">Privacy policy</a>
+        <a class="footer-legal" href="/terms">Terms</a>
+        <a class="footer-legal" href="/review">Leave a review</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/analytics.js"></script>
+  <script src="/js/checkout.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

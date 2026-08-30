@@ -275,6 +275,31 @@ nothing (0 dialogs, 0 elements, shown as literal text).
 
 ---
 
+## Collecting reviews
+
+`/review` is the page to send a client once their site has been running a
+few weeks. It posts to the same Formspree endpoint as the quote form, tagged
+`form_type=review`, so it needs no extra setup.
+
+**Nothing publishes itself.** Reviews arrive by email and go on the site by
+hand. An auto-publishing form on your own marketing site is an open invitation
+to whatever a stranger wants to write there.
+
+The consent checkbox is **not required**. Someone who wants to tell you the
+work was poor should be able to, without also having to authorise you quoting
+them — a form that only accepts publishable praise is not collecting feedback,
+it is collecting marketing copy.
+
+Star rating is a real radio group, not clickable glyphs: it works with
+JavaScript off, it is keyboard reachable, and a screen reader announces the
+rating rather than a decorative character. The submit handler is shared with
+the contact form, so the "never report success for something that did not
+send" guarantee holds here too — and a review deliberately does **not** fire
+the ad conversion, or the ad platform would start optimising for people
+leaving feedback instead of buying.
+
+---
+
 ## Taking payment (Stripe)
 
 Stripe **Payment Links** — no secret key, no server, no card data touching our
