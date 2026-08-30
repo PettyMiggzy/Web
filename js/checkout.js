@@ -38,15 +38,15 @@
     ownit:          "https://buy.stripe.com/test_14AaEY2Lv9eXf0vdRtcMM06"
   };
 
-  // Empty until the live account's links exist. Do not paste test URLs here.
+  // Live links. These charge real cards. Never paste a test URL here.
   var LIVE = {
-    launch_monthly: "",
-    grow_monthly:   "",
-    scale_monthly:  "",
-    launch_annual:  "",
-    grow_annual:    "",
-    scale_annual:   "",
-    ownit:          ""
+    launch_monthly: "https://buy.stripe.com/3cI6oI9dF7x4cq100w5ZC00",
+    grow_monthly:   "https://buy.stripe.com/4gM4gA1Ld9Fc61D28E5ZC01",
+    scale_monthly:  "https://buy.stripe.com/cNiaEY89B5oWcq13cI5ZC02",
+    launch_annual:  "https://buy.stripe.com/fZu5kEgG74kS9dPfZu5ZC03",
+    grow_annual:    "https://buy.stripe.com/8x2aEYcpReZw2PreVq5ZC04",
+    scale_annual:   "https://buy.stripe.com/4gM8wQ4Xp2cK89L3cI5ZC05",
+    ownit:          "https://buy.stripe.com/eVqaEY2Phg3A1LndRm5ZC06"
   };
 
   /* Test links are used only on localhost, so a visitor to the real site can

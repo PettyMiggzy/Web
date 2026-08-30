@@ -367,8 +367,13 @@ which provider is behind them.
 
 - **Square** — Dashboard → Online → Payment Links → Create → *Accept recurring
   payments*.
-- **Stripe** — Dashboard → Payment links → New. Products and prices already
-  exist in the live account.
+- **Stripe** — **live and wired.** 4 products, 7 prices and 7 Payment Links
+  exist in `acct_1UA9y0LW1IvMagQO`; the URLs are in `js/checkout.js`.
+
+**Still to do by hand:** Dashboard → Settings → Billing → **Customer portal**,
+enable cancel / payment-method update / invoice history, in live *and* test.
+Until then "cancel any time" means emailing you, which is the manual work the
+plan exists to avoid.
 
 Do not use Zelle or a bank transfer for a subscription. There is no recurring
 charge, so every client has to remember to pay you each month — that is twenty
