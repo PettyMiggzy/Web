@@ -1,0 +1,27 @@
+{
+  "name": "Bloom & Bean", "slug": "sample-cafe", "vertical": "cafe", "spec": true,
+  "titleSuffix": "Neighbourhood café", "phone": "(555) 019-2837",
+  "address": "48 Willow Lane, Portland, OR",
+  "headline": "Your cosy corner for really good coffee.",
+  "subhead": "Locally roasted beans, fresh-baked pastries, and a warm spot to slow down. Order ahead and skip the queue.",
+  "heroChip": "Baked fresh every morning",
+  "highlights": ["Locally roasted", "Baked on site daily", "Order ahead by phone"],
+  "stats": [
+    {"value":"Since 2018","label":"on Willow Lane"},
+    {"value":"4.8/5","label":"customer rating"},
+    {"value":"7am","label":"doors open"}
+  ],
+  "services": [
+    {"icon":"☕","name":"Coffee","text":"Single-origin espresso, pour-over, and the flat white people cross town for.","price":"$3.50"},
+    {"icon":"🥐","name":"Pastries","text":"Croissants, danishes and scones, out of the oven before you're awake.","price":"$4"},
+    {"icon":"🥪","name":"Lunch","text":"Sandwiches and soups made each morning with what's good that week.","price":"$9"},
+    {"icon":"🎂","name":"Whole cakes","text":"Order a day ahead for birthdays and celebrations."}
+  ],
+  "aboutText": "Two friends, one small roaster, and a stubborn belief that a café should feel like someone's front room. We know most of our regulars by name and their order by heart.",
+  "reasons": ["Beans roasted within ten miles","Everything baked on the premises","Oat, almond and soy at no extra charge","Dogs very welcome"],
+  "hours": [
+    {"day":"Mon–Fri","time":"7:00am – 4:00pm"},
+    {"day":"Saturday","time":"8:00am – 4:00pm"},
+    {"day":"Sunday","time":"8:00am – 2:00pm"}
+  ]
+}

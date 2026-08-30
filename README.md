@@ -41,6 +41,51 @@ resolve the extensionless links.)
 
 ---
 
+## The site factory (templates/)
+
+Five vertical templates behind one engine. A profile JSON goes in, a single
+self-contained HTML file comes out — no external assets, no broken paths, and
+a spec site can be handed over as one file.
+
+```bash
+node new-site.js --list                      # show verticals
+cp clients/_example.json clients/joes.json   # fill from their Google Business Profile
+node new-site.js clients/joes.json           # -> dist/joes/index.html
+node new-site.js clients/*.json              # rebuild everything
+```
+
+| Vertical | For |
+|---|---|
+| `trades` | Plumbing, HVAC, electrical, roofing, landscaping |
+| `cafe` | Cafés, bakeries, restaurants |
+| `wellness` | Yoga, massage, salons, spas |
+| `retail` | Shops, boutiques, galleries |
+| `professional` | Dental, legal, accounting, clinics |
+
+Each vertical is a token set plus copy defaults in `templates/verticals/`. The
+stylesheet in `templates/theme.js` never changes — that is what makes a build
+take minutes instead of hours. To add a sixth vertical, copy a file in
+`verticals/`, change the tokens, and register it in `templates/build.js`.
+
+**Profile fields.** `name`, `vertical`, `headline` and `subhead` are required;
+everything else falls back to the vertical's defaults. Set `spec: true` for a
+prospecting site — that adds the "sample site" disclosure bar and forces
+`noindex,nofollow` so an unsold site never lands in Google. Set `leadEndpoint`
+to a form URL to make the contact form live; leave it empty and the form tells
+the visitor plainly that it is not connected rather than faking a success
+message.
+
+**Deliberately no images.** Templates ship with typographic and gradient
+treatments only. AI-generated imagery carries no copyright (see BRAND.md), so
+it cannot be assigned to a client under an IP-transfer clause — use the
+client's own photos, or licensed stock, on anything you sell.
+
+Every template is verified on each build: 16 contrast pairs per vertical at
+WCAG AA, one `h1`, four landmarks, zero dead links, labelled form fields, valid
+JSON-LD, and no horizontal overflow down to 344px.
+
+---
+
 ## Domain & DNS (simplicitybuilds.com)
 
 DNS is managed **at GoDaddy**, not Vercel. This is deliberate: the mailbox

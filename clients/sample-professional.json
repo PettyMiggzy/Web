@@ -1,0 +1,31 @@
+{
+  "name": "Harbor Dental", "slug": "sample-professional", "vertical": "professional", "spec": true,
+  "titleSuffix": "Family & cosmetic dentistry", "phone": "(555) 664-1200",
+  "address": "300 Bayview Ave, Suite 4, Newport, RI",
+  "schemaType": "Dentist",
+  "headline": "Dentistry without the dread.",
+  "subhead": "A calm practice where you get told what's happening, what it costs, and what your options are — before anything starts.",
+  "heroChip": "Accepting new patients",
+  "highlights": ["Costs quoted up front", "Evening appointments", "Nervous patients welcome"],
+  "stats": [
+    {"value":"20+","label":"years practising"},
+    {"value":"4.9/5","label":"patient rating"},
+    {"value":"Same week","label":"emergency slots"}
+  ],
+  "services": [
+    {"icon":"🦷","name":"Check-ups & hygiene","text":"A thorough exam, a clean, and a plain-English summary.","price":"from $95"},
+    {"icon":"✨","name":"Cosmetic work","text":"Whitening, veneers and bonding, with honest advice on what's worth doing."},
+    {"icon":"🩹","name":"Fillings & crowns","text":"Same-day crowns where possible, so you're not walking around waiting."},
+    {"icon":"🚨","name":"Emergency care","text":"Pain or a broken tooth? We keep slots free every day.","price":"same week"},
+    {"icon":"👶","name":"Children's dentistry","text":"Gentle first visits designed so they'll happily come back."},
+    {"icon":"😴","name":"Anxiety-aware care","text":"Longer appointments and sedation options if you need them."}
+  ],
+  "aboutText": "Most people who walk in have put the visit off for years, and usually because of something that happened somewhere else. We work slowly, explain everything twice if you want, and never sell treatment you don't need.",
+  "reasons": ["Written cost estimate before treatment","No treatment recommended you don't need","Longer appointments for anxious patients","Most insurance plans accepted"],
+  "hours": [
+    {"day":"Mon–Wed","time":"8:00am – 6:00pm"},
+    {"day":"Thursday","time":"8:00am – 8:00pm"},
+    {"day":"Friday","time":"8:00am – 3:00pm"},
+    {"day":"Sat–Sun","time":"Closed"}
+  ]
+}

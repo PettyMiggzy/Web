@@ -1,0 +1,34 @@
+{
+  "_readme": "Copy this file, fill it from the prospect's Google Business Profile, then: node new-site.js clients/your-file.json",
+  "name": "Business Name",
+  "slug": "business-name",
+  "vertical": "trades",
+  "spec": true,
+  "titleSuffix": "City, ST",
+  "phone": "(555) 000-0000",
+  "email": "hello@example.com",
+  "address": "123 Main St, City, ST 00000",
+  "url": "",
+  "leadEndpoint": "",
+  "headline": "The one-line promise, in the owner's own words.",
+  "subhead": "Two sentences on what they do and who for. Plain language, no jargon.",
+  "heroChip": "Licensed & insured",
+  "highlights": ["Point one", "Point two", "Point three"],
+  "stats": [
+    { "value": "15+", "label": "years in business" },
+    { "value": "4.9/5", "label": "average rating" },
+    { "value": "Same day", "label": "callbacks" }
+  ],
+  "services": [
+    { "icon": "◆", "name": "Service one", "text": "One sentence on what it covers.", "price": "from $99" },
+    { "icon": "◆", "name": "Service two", "text": "One sentence on what it covers." },
+    { "icon": "◆", "name": "Service three", "text": "One sentence on what it covers." }
+  ],
+  "aboutText": "A short paragraph about the business. Pull the tone from their reviews.",
+  "reasons": ["Reason one", "Reason two", "Reason three"],
+  "hours": [
+    { "day": "Mon–Fri", "time": "8:00am – 6:00pm" },
+    { "day": "Saturday", "time": "9:00am – 2:00pm" },
+    { "day": "Sunday", "time": "Closed" }
+  ]
+}

@@ -10,3 +10,6 @@ node_modules/
 .vercel/
 dist/
 .cache/
+
+# Generated client/spec sites — rebuild with: node new-site.js clients/*.json
+dist/
