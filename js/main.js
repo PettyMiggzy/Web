@@ -258,6 +258,17 @@
         .then((r) => r.json().catch(() => ({})).then((body) => ({ ok: r.ok, body })))
         .then(({ ok, body }) => {
           if (ok) {
+            // Report the conversion only once the provider actually accepted
+            // the lead. Firing on click instead would count every abandoned
+            // and failed submit, and the ad platform would optimise toward
+            // traffic that never becomes a customer.
+            if (typeof window.sbTrack === "function") {
+              const plan = (form.querySelector("#plan") || {}).value || "";
+              window.sbTrack("lead", {
+                plan: plan,
+                value: { launch: 49.99, grow: 69.99, scale: 149.99, ownit: 799 }[plan] || 0,
+              });
+            }
             form.reset();
             say("Thanks — that’s with us. We’ll reply within one business day.",
                 "var(--accent)");

@@ -269,6 +269,48 @@ nothing (0 dialogs, 0 elements, shown as literal text).
 
 ---
 
+## Running paid ads
+
+`js/analytics.js` holds every tracking ID in one `CONFIG` block. **Empty values
+mean nothing loads** — no script, no cookie, no request — which is how it
+ships, so the site stays free of third-party JS until you actually buy traffic.
+
+```js
+var CONFIG = {
+  ga4: "G-XXXXXXXXXX",        // Google Analytics 4
+  ads: "AW-XXXXXXXXX",        // Google Ads account
+  adsLabel: "AW-XXXXXXXXX/AbC…",  // send_to from the conversion action
+  meta: "123456789012345",    // Meta pixel
+};
+```
+
+**`adsLabel` is not optional if you want bidding to work.** With `ads` set but
+no label, Google Ads records nothing — that is the single most common reason a
+campaign reports zero conversions while clearly receiving leads.
+
+The conversion fires **only after the form provider confirms it accepted the
+lead** — never on click. Firing on click would count abandoned and failed
+submissions, and Smart Bidding would optimise toward traffic that never becomes
+a customer. Verified: fires once on success with the plan and its dollar value,
+and does not fire on a validation error or a network failure.
+
+Before spending anything, two things are worth knowing:
+
+- **Generic "web design" keywords are brutal.** Roughly $5–20 a click, so at a
+  2–4% conversion rate a lead costs $150–800 and a customer $600–3,000. At
+  $49.99/mo that can take 20+ months to recoup. Long-tail geo terms
+  ("website for plumbers in Indianapolis") and cheap local Meta targeting cost
+  a fraction.
+- **Advertise the free mockup, not the subscription.** "See your website before
+  you pay anything" is the one offer competitors can't match, because for them
+  a spec build costs a day and for us it costs minutes.
+
+`privacy.html` documents the tracking and how to opt out, and `terms.html`
+covers recurring billing, cancellation and ownership — ad platforms want both
+for a subscription offer.
+
+---
+
 ## Rename the brand (once you've chosen a name)
 
 The brand name appears as the word **"Simplicity Builds"** and the email
