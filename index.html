@@ -392,32 +392,13 @@
       </div>
     </section>
 
-    <!-- ===================== CLIENT REVIEWS =====================
-         This section is `hidden` because there are no reviews yet, and an
-         empty "What clients say" heading is worse than no heading at all.
+    <!-- CLIENT REVIEWS
+         Add one with:  ./add-review.sh "Name" "Business" 5 "Their words"
+         It writes the card and unhides this section on the first review.
 
-         TO ADD A REVIEW (two steps):
-           1. Paste one <figure class="review"> block below, filled in from
-              the email the review arrived in.
-           2. Delete the word `hidden` from the <section> tag.
-
-         Never write one of these yourself. A testimonial you invented is a
-         fabricated endorsement of a real business, and the first client who
-         reads it will know it wasn't them.
-
-         TEMPLATE — copy, don't edit in place:
-
-         <figure class="review">
-           <div class="stars" aria-label="5 out of 5">★★★★★</div>
-           <blockquote><p>Their exact words, unedited.</p></blockquote>
-           <figcaption><strong>Their Name</strong><span>Their Business</span></figcaption>
-         </figure>
-
-         Once at least one review is live, add Review/AggregateRating JSON-LD
-         so Google can show stars — but ONLY then. Rating markup with nothing
-         visible on the page to back it up is a structured-data violation and
-         gets rich results pulled sitewide.
-         ========================================================== -->
+         Only publish a review where the client ticked "you may publish this"
+         in the submission. Never write one — a testimonial you invented is a
+         fabricated endorsement of a real business. -->
     <section class="section-tight" id="reviews">
       <div class="container">
         <span class="eyebrow reveal">In their words</span>

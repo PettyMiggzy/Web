@@ -242,6 +242,23 @@
     form.addEventListener("submit", (e) => {
       const action = form.getAttribute("action") || "";
 
+      // Name the email after the reviewer and their score. A row of identical
+      // "New client review" subjects is unsearchable six months from now; a
+      // subject that says who and how many stars means the inbox is the index
+      // and nobody has to go digging through a submissions dashboard.
+      if (isReview) {
+        const subj = form.querySelector('input[name="_subject"]');
+        const biz = (form.querySelector("#rev-business") || {}).value || "";
+        const rating = (form.querySelector('input[name="rating"]:checked') || {}).value || "";
+        if (subj) {
+          subj.value =
+            "Review" +
+            (rating ? " " + rating + "\u2605" : "") +
+            (biz.trim() ? " \u2014 " + biz.trim() : "") +
+            " | Simplicity Builds";
+        }
+      }
+
       // No real endpoint wired: route to email rather than pretend a lost
       // submission succeeded.
       if (action.includes("YOUR_FORM_ID") || action === "#") {
