@@ -350,6 +350,35 @@ leaving feedback instead of buying.
 
 ---
 
+## Taking payment
+
+Hosted **payment links** — no secret key, no server, no card data near our
+code. Each plan button is an anchor to the provider's hosted checkout, which
+handles subscriptions, receipts, failed-payment retries and the customer
+portal.
+
+**The provider is interchangeable.** `js/checkout.js` holds URLs, so Square,
+Stripe and PayPal all work the same way: create one link per plan and interval
+in whichever dashboard, paste the URLs in. Nothing else in the codebase knows
+which provider is behind them.
+
+- **Square** — Dashboard → Online → Payment Links → Create → *Accept recurring
+  payments*.
+- **Stripe** — Dashboard → Payment links → New. Products and prices already
+  exist in the live account.
+
+Do not use Zelle or a bank transfer for a subscription. There is no recurring
+charge, so every client has to remember to pay you each month — that is twenty
+monthly reminders you have to chase, and each one is a fresh chance for them
+to reconsider. Most banks also prohibit business use on personal Zelle, and
+transfers are irreversible with no record trail for accounting.
+
+Worth enabling on the bigger plans: **ACH debit** is 0.8% capped at $5 versus
+2.9% + 30¢ on cards. On Scale that is $1.20 instead of $4.65, and bank debits
+fail less often than cards — which quietly reduces involuntary churn.
+
+---
+
 ## Taking payment (Stripe)
 
 Stripe **Payment Links** — no secret key, no server, no card data touching our

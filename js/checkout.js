@@ -1,8 +1,20 @@
 /* =========================================================================
    Simplicity Builds — checkout links
 
-   Stripe Payment Links. No secret key, no server, no card data touching our
-   code — the button is an anchor to Stripe's hosted checkout.
+   Hosted payment links. No secret key, no server, no card data touching our
+   code — the button is just an anchor to the provider's hosted checkout.
+
+   PROVIDER-AGNOSTIC BY DESIGN. These are URLs, so Square, Stripe and PayPal
+   are interchangeable: create a link per plan in whichever dashboard, paste
+   the URLs below, done. Nothing else in the codebase knows or cares which
+   provider is behind them.
+
+     Square  Dashboard > Online > Payment Links > Create > "Accept recurring
+             payments", one per plan and interval.
+     Stripe  Dashboard > Payment links > New.
+
+   Whichever you pick, the plan/interval mapping below is what keeps the
+   button in step with the price the visitor is looking at.
 
    TEST vs LIVE: the site uses LIVE links. TEST links are kept here so the
    flow can be exercised without moving money, but they are never served to
