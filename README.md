@@ -230,17 +230,28 @@ below work.
 
 ---
 
-## Wire up the contact form (5 minutes)
+## Contact form & phone
 
-The form posts to a placeholder. To actually receive leads:
+**The form is live** — it posts to Formspree and a submission was verified
+accepted end to end (`{"ok":true}`, HTTP 200). Leads arrive at the address
+configured in the Formspree dashboard.
 
-1. Create a free form at **[formspree.io](https://formspree.io)** (or
-   [basin](https://usebasin.com) / [getform](https://getform.io)).
-2. Copy your endpoint, e.g. `https://formspree.io/f/abcdefg`.
-3. In `contact.html`, replace `YOUR_FORM_ID` in the `<form action="...">`.
+To change providers or add the phone number later:
 
-Until you do, the form shows a friendly "connect an endpoint" message instead
-of submitting.
+```bash
+./activate-contact.sh <formspree_id>                              # form only
+./activate-contact.sh <formspree_id> "+15551234567" "(555) 123-4567"   # + phone
+```
+
+The phone arguments are optional and must be given **both or neither** — one
+without the other produces a link that displays one number and dials another.
+Until a real number is supplied the phone links stay hidden by CSS, so a
+`PHONE_..._PLACEHOLDER` can never reach a visitor.
+
+If the endpoint is ever reset to `YOUR_FORM_ID`, the form stops submitting and
+tells the visitor plainly to email instead. That fallback is deliberate: a form
+that silently swallows a lead while showing a success message is worse than one
+that admits it is offline.
 
 ---
 
