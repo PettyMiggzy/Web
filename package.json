@@ -1,0 +1,6 @@
+{
+  "name": "simplicity-builds",
+  "private": true,
+  "type": "module",
+  "description": "Static marketing site. No build step and no dependencies — `type: module` exists only so serverless functions in api/ are treated as ESM, matching the Cloudflare functions in functions/."
+}
