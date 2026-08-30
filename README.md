@@ -317,11 +317,14 @@ paste a `<figure class="review">` block, then delete `hidden`.
 endorsement of a real business, and the first client who reads it will know it
 was not them.
 
-Reviews are plain HTML rather than JS-rendered, so they are indexable. Once at
-least one is live you can add `Review` / `AggregateRating` JSON-LD to get stars
-in search results — but **only then**. Rating markup with nothing visible on
-the page to support it is a structured-data violation and gets rich results
-pulled across the whole site.
+Reviews are plain HTML rather than JS-rendered, so they are indexable.
+
+**Do not add `Review` or `AggregateRating` JSON-LD for these.** Google does not
+support review snippets where the reviewed entity is the same site hosting
+them — self-serving reviews about your own `Organization` are ineligible, so
+the markup buys no stars and only invites a manual action. Stars in search come
+from third-party reviews, which for this business means a **Google Business
+Profile**. Reviews on this page are for the human reading them.
 
 ---
 
