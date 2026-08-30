@@ -127,6 +127,84 @@
     }
   }
 
+  /* ---- Domain availability checker ---- */
+  const domainForm = document.querySelector("form[data-domain]");
+  if (domainForm) {
+    const input = domainForm.querySelector("#dq");
+    const status = domainForm.querySelector(".domain-status");
+    const list = domainForm.querySelector(".domain-results");
+    const btn = domainForm.querySelector("button[type=submit]");
+
+    const money = (n) =>
+      typeof n === "number" ? "$" + n.toFixed(2) : null;
+
+    const render = (data) => {
+      list.textContent = "";
+      data.results.forEach((r) => {
+        const li = document.createElement("li");
+
+        const name = document.createElement("span");
+        name.className = "name";
+        name.textContent = r.domain;          // textContent, never innerHTML
+        li.append(name);
+
+        const tag = document.createElement("span");
+        if (r.available === true) { tag.className = "tag yes"; tag.textContent = "Available"; }
+        else if (r.available === false) { tag.className = "tag no"; tag.textContent = "Taken"; }
+        else { tag.className = "tag unknown"; tag.textContent = "Price only"; }
+        li.append(tag);
+
+        if (r.price) {
+          const cost = document.createElement("span");
+          cost.className = "cost";
+          cost.textContent =
+            r.price.renewal && r.price.renewal !== r.price.registration
+              ? `${money(r.price.registration)} first year, then ${money(r.price.renewal)}/yr`
+              : `${money(r.price.registration)}/yr`;
+          li.append(cost);
+        }
+        list.append(li);
+      });
+      list.hidden = data.results.length === 0;
+    };
+
+    domainForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const q = input.value.trim();
+      if (!q) { input.focus(); return; }
+
+      btn.disabled = true;
+      status.textContent = "Checking…";
+      status.style.color = "var(--text-mute)";
+      list.hidden = true;
+
+      fetch("/api/domain-check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: q }),
+      })
+        .then((r) => r.json().then((body) => ({ ok: r.ok, body })))
+        .then(({ ok, body }) => {
+          if (!ok) {
+            status.textContent = body.error || "Couldn’t check that name — try another.";
+            status.style.color = "var(--accent-2)";
+            return;
+          }
+          render(body);
+          status.textContent = body.configured
+            ? "Prices are what the registrar charges. We don’t mark them up, and the domain is registered in your name."
+            : body.note || "Availability checking isn’t switched on yet — these are the at-cost prices.";
+          status.style.color = "var(--text-mute)";
+        })
+        .catch(() => {
+          status.textContent =
+            "Couldn’t reach the domain service just now. Mention the name you want in the form below and we’ll check it for you.";
+          status.style.color = "var(--accent-2)";
+        })
+        .finally(() => { btn.disabled = false; });
+    });
+  }
+
   /* ---- Contact form (front-end validation + friendly submit) ---- */
   const form = document.querySelector("form[data-contact]");
   if (form) {

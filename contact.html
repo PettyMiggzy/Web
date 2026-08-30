@@ -63,7 +63,27 @@
       </div>
     </section>
 
-    <section class="section-tight" id="quote" style="padding-top:1rem;">
+    <!-- DOMAIN CHECK -->
+    <section class="section-tight" id="domain" style="padding-top:1rem;padding-bottom:0;">
+      <div class="container narrow">
+        <div class="panel reveal">
+          <span class="eyebrow">Step one, if you need it</span>
+          <h2 class="mt-1" style="font-size:var(--fs-h3);">Do you have a domain yet?</h2>
+          <p class="mt-1">Most people don’t, and it’s the thing that stalls projects for weeks. Type your business name and we’ll check what’s free — at cost, with no markup from us, ever.</p>
+          <form class="domain-form mt-2" data-domain novalidate>
+            <label class="visually-hidden" for="dq">Your business name</label>
+            <div class="domain-row">
+              <input id="dq" name="q" type="text" placeholder="Joe’s Plumbing" autocomplete="organization" />
+              <button class="btn btn-primary" type="submit">Check</button>
+            </div>
+            <p class="domain-status form-note" role="status" aria-live="polite"></p>
+            <ul class="domain-results" hidden></ul>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight" id="quote" style="padding-top:1.5rem;">
       <div class="container split" style="align-items:start;">
         <!-- FORM -->
         <div class="panel reveal">

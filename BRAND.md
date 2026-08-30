@@ -188,3 +188,32 @@ experienced developers were 19% *slower* with AI while believing they were 20%
 faster — a 39-point perception gap. Track real hours across ten builds before
 treating the capacity math as settled.
 
+---
+
+## Domains: pass through at cost, never resell (decided Aug 2026)
+
+Verified pricing (Porkbun public API, live): .com $11.08 register **and**
+renew; .xyz $2.04 register, **$14.21 renew**. That gap is the whole story on
+cheap domains.
+
+**Do not join GoDaddy's reseller programme.** Registrations route through Wild
+West Domains as registrar of record, domains cannot be pushed between Wild West
+Domains and GoDaddy, and there is a 60-day transfer lock. Margin is roughly
+$3-7 per domain per year — about $100/year at twenty clients, against a
+$53.88-89.88/year programme fee. It buys almost nothing and costs the one piece
+of unclaimed ground both research passes identified: a written ownership and
+export guarantee.
+
+**Do not buy domains to unlock GoDaddy's API.** The Availability API is gated
+at 50+ domains held. Buying twenty cheap TLDs to reach it costs ~$280/year
+recurring, because letting them lapse drops you back under the gate. Porkbun's
+API has no minimum and a free sandbox.
+
+**Do this instead:** charge for the work, not the domain.
+
+> Domain setup — $49 one-time. Domain billed at cost (~$11-22/yr), registered
+> in your name, in your account, from day one.
+
+You get paid for the fifteen minutes of setup, the client owns it outright
+immediately, and "we don't mark up your domain and we never hold it" becomes a
+line you can say out loud.

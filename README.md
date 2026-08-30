@@ -86,6 +86,48 @@ JSON-LD, and no horizontal overflow down to 344px.
 
 ---
 
+## Domain checking (Porkbun)
+
+`functions/api/domain-check.js` is a Cloudflare Pages Function that checks
+domain availability and returns **at-cost** registrar pricing. The contact page
+uses it as step one of onboarding, because "go buy a domain" is the single
+biggest reason a project stalls for weeks.
+
+Why Porkbun rather than GoDaddy: GoDaddy's Availability API requires **50+
+domains in the account**. Reaching that by buying cheap TLDs is a trap — .xyz
+registers at $2.04 and *renews* at $14.21 (live figures, Aug 2026), so twenty
+of them is roughly $280/year, forever, since letting them lapse drops you back
+under the gate. Porkbun's API has no minimum, no fee, and a free sandbox.
+
+Switch it on:
+
+```bash
+wrangler pages secret put PORKBUN_API_KEY      # pk1_sb_… for the sandbox
+wrangler pages secret put PORKBUN_SECRET_KEY   # sk1_sb_…
+```
+
+Credentials live in Cloudflare env vars and never reach the browser — that is
+why this is a server-side function rather than a fetch from the page. **With no
+keys configured it still returns real pricing and says plainly that
+availability checking is off; it never guesses, and never reports a name as
+free when it doesn't know.**
+
+Guards: business names are normalised to a valid DNS label (accents stripped,
+`&` becomes "and", 63-char cap) and rejected if they don't match, so nothing
+unvalidated reaches the upstream URL. The TLD list can be narrowed by the
+caller but never widened past the four-item allowlist. Upstream calls have a
+10-second ceiling, one TLD failing doesn't sink the others, and results are
+rendered with `textContent` — a hostile API response cannot inject markup
+(verified: 0 dialogs, no injected elements).
+
+**Commercial note.** Pass domains through at cost and register them in the
+client's name. Reselling via GoDaddy's reseller programme routes registrations
+through Wild West Domains as registrar of record, and domains cannot be pushed
+between Wild West Domains and GoDaddy — which is a weaker version of the
+lock-in this business exists to argue against. See BRAND.md.
+
+---
+
 ## Spec sites & hosting (Cloudflare Pages)
 
 **Hosting note.** Vercel's Fair Use Guidelines restrict Hobby to
