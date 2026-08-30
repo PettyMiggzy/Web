@@ -38,11 +38,33 @@ mkdir -p spec/sites
 echo "Building ${#profiles[@]} site(s):"
 node new-site.js "${profiles[@]}"
 
-# new-site.js writes to dist/<slug>/; move those into the Pages project.
+# Publish ONLY the slugs that have a profile right now. dist/ is a build cache
+# and is never pruned, so copying dist/*/ wholesale would keep publishing a
+# client after their profile was deleted — an offboarded client's site would
+# silently stay live. Derive the list from the profiles instead.
+published=0
+for f in "${profiles[@]}"; do
+  slug=$(node -e '
+    const p = JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"));
+    process.stdout.write(p.slug || p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""));
+  ' "$f")
+  if [ -f "dist/$slug/index.html" ]; then
+    mkdir -p "spec/sites/$slug"
+    cp "dist/$slug/index.html" "spec/sites/$slug/index.html"
+    published=$((published + 1))
+  else
+    echo "  WARNING: $f produced no dist/$slug/index.html — not published" >&2
+  fi
+done
+
+# Anything left in dist/ without a profile is stale. Say so, loudly: silence
+# here is what would let a removed client stay online.
 for d in dist/*/; do
+  [ -d "$d" ] || continue
   slug=$(basename "$d")
-  mkdir -p "spec/sites/$slug"
-  cp "$d/index.html" "spec/sites/$slug/index.html"
+  if [ ! -d "spec/sites/$slug" ]; then
+    echo "  NOTE: dist/$slug has no profile in clients/ — NOT published (stale build)." >&2
+  fi
 done
 
 count=$(find spec/sites -name index.html | wc -l | tr -d ' ')

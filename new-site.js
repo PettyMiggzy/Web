@@ -33,6 +33,25 @@ if (args[0] === '--list') {
 const slugify = (s) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
+// A slug becomes a directory name AND a public subdomain, so it must be a
+// single safe path segment. A traversing slug ("../../x") would write outside
+// dist/; an empty one ("!!!" slugifies to "") would clobber dist/index.html and
+// then be silently skipped when publishing. Reject both loudly rather than
+// write somewhere surprising.
+const SAFE_SLUG = /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/;
+function assertSafeSlug(slug, source) {
+  if (!slug) {
+    throw new Error(
+      `could not derive a slug from name "${source}" — add an explicit "slug" field (lowercase letters, digits and hyphens)`
+    );
+  }
+  if (!SAFE_SLUG.test(slug)) {
+    throw new Error(
+      `unsafe slug "${slug}" — must be lowercase letters, digits and hyphens only, 1-63 chars, no leading/trailing hyphen`
+    );
+  }
+}
+
 let built = 0;
 let failed = 0;
 
@@ -41,6 +60,7 @@ for (const file of args) {
     const profile = JSON.parse(fs.readFileSync(file, 'utf8'));
     const html = buildSite(profile);
     const slug = profile.slug || slugify(profile.name);
+    assertSafeSlug(slug, profile.name);
     const outDir = path.join('dist', slug);
     fs.mkdirSync(outDir, { recursive: true });
     const outFile = path.join(outDir, 'index.html');
