@@ -611,3 +611,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .review figcaption { margin-top: auto; display: flex; flex-direction: column; gap: .15rem; font-size: var(--fs-sm); }
 .review figcaption strong { color: var(--text); font-weight: 600; }
 .review figcaption span { color: var(--text-mute); }
+
+/* ---- Breadcrumbs / trade links ---- */
+.crumbs { display: flex; flex-wrap: wrap; gap: .5rem .9rem; align-items: center; font-size: var(--fs-sm); color: var(--text-mute); padding-top: 1.5rem; }
+.crumbs a { color: var(--text-soft); text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
+.crumbs a:hover { color: #fff; }

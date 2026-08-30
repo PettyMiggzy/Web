@@ -10,4 +10,9 @@
   <url><loc>https://simplicitybuilds.com/privacy</loc><priority>0.2</priority></url>
   <url><loc>https://simplicitybuilds.com/terms</loc><priority>0.2</priority></url>
   <url><loc>https://simplicitybuilds.com/review</loc><priority>0.4</priority></url>
+  <url><loc>https://simplicitybuilds.com/websites-for/plumbers</loc><priority>0.8</priority></url>
+  <url><loc>https://simplicitybuilds.com/websites-for/cafes</loc><priority>0.8</priority></url>
+  <url><loc>https://simplicitybuilds.com/websites-for/salons</loc><priority>0.8</priority></url>
+  <url><loc>https://simplicitybuilds.com/websites-for/shops</loc><priority>0.8</priority></url>
+  <url><loc>https://simplicitybuilds.com/websites-for/clinics</loc><priority>0.8</priority></url>
 </urlset>

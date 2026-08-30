@@ -275,6 +275,34 @@ nothing (0 dialogs, 0 elements, shown as literal text).
 
 ---
 
+## SEO
+
+The honest constraint: a domain this new **cannot rank for "web design"**.
+Those terms belong to agencies with a decade of backlinks. What is winnable is
+long-tail with buying intent, where the five vertical templates are an actual
+advantage rather than marketing.
+
+`websites-for/` holds one page per trade — plumbers, cafés, salons, shops,
+clinics. Each targets what that trade's customers search and what their site
+has to do, and each is written separately: **worst pairwise vocabulary overlap
+is 27%**, checked on every build.
+
+That number matters. Near-identical pages spun out per keyword are *doorway
+pages*, and Google penalises them sitewide rather than just ignoring them. Five
+genuinely different pages is fine; five hundred city×trade permutations would
+get the whole domain demoted. **Do not generate these mechanically** — if a new
+trade page cannot say something the others do not, it should not exist.
+
+Every page carries `FAQPage` and `BreadcrumbList` JSON-LD, and each is linked
+from the home and services pages so it gets crawled and receives internal link
+equity.
+
+Schema coverage is now complete: `ProfessionalService` + `FAQPage` on home,
+`Product` on pricing, `Service` on services, `AboutPage`, `ContactPage`,
+`CollectionPage`, and per-vertical `FAQPage` + `BreadcrumbList`.
+
+---
+
 ## Showing reviews
 
 `index.html` has a `#reviews` section between the promise section and the FAQ,
