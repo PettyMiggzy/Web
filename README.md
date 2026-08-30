@@ -86,6 +86,45 @@ JSON-LD, and no horizontal overflow down to 344px.
 
 ---
 
+## Spec sites & hosting (Cloudflare Pages)
+
+**Hosting note.** Vercel's Fair Use Guidelines restrict Hobby to
+"non-commercial personal use only", and define commercial usage to include
+"advertising the sale of a product or service" and "receiving payment to
+create, update, or host the site". Both this site and every client site are
+commercial under that definition, so the options are Vercel Pro ($20/mo) or
+Cloudflare Pages (free, no equivalent clause). `_headers` and `_redirects`
+port the `vercel.json` rules to Pages; both configs can coexist.
+
+**Spec sites** are previews built for one named prospect and sent to them
+directly — never a public free tier, never listed on the pricing page.
+
+```bash
+cp clients/_example.json clients/joes-plumbing.json   # fill from their GBP
+./deploy-spec.sh --build-only                          # inspect spec/sites/
+./deploy-spec.sh                                       # publish
+#   -> https://joes-plumbing.simplicitybuilds.com
+```
+
+All previews live in **one** Pages project (`spec/`) behind a single wildcard
+custom domain, so prospect fifty needs no new project and no new DNS record.
+`spec/functions/_middleware.js` maps `<slug>.simplicitybuilds.com` to
+`/sites/<slug>/`. It refuses to rewrite the apex, `www`, mail-related
+subdomains, deeper nestings, and any malformed slug — so it can never shadow
+the marketing site or the mailbox. Unknown slugs get a branded 404.
+
+Spec sites are noindexed three times over: `noindex,nofollow` in the template,
+an `X-Robots-Tag` header on every response, and a blanket `Disallow: /` in
+`spec/robots.txt`. An unsold preview of someone's real business must never
+reach Google.
+
+One-time setup: `npm i -g wrangler && wrangler login`, create a Pages project
+named `simplicity-spec`, add `*.simplicitybuilds.com` as a custom domain, then
+add a proxied `CNAME * -> simplicity-spec.pages.dev` in GoDaddy DNS. Free-tier
+ceilings that matter: 500 builds/month and 100 projects (this design uses one).
+
+---
+
 ## Domain & DNS (simplicitybuilds.com)
 
 DNS is managed **at GoDaddy**, not Vercel. This is deliberate: the mailbox

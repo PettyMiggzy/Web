@@ -1,0 +1,19 @@
+# Cloudflare Pages headers — ports the rules previously in vercel.json.
+# Both files can coexist; each platform ignores the other's config.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Assets are not content-hashed, so never mark them immutable — a redeploy
+# would otherwise leave returning visitors on stale CSS for a year.
+/css/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/js/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/assets/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400

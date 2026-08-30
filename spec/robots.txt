@@ -1,0 +1,4 @@
+# Spec sites are private previews built for one named business.
+# None of them should ever be indexed.
+User-agent: *
+Disallow: /

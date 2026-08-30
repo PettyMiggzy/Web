@@ -1,0 +1,9 @@
+# Cloudflare Pages redirects.
+#
+# Clean URLs (/pricing rather than /pricing.html) are automatic on Pages —
+# it serves pricing.html at /pricing and 308s the .html form. No rules needed
+# for that, unlike Vercel where it required "cleanUrls": true.
+#
+# Send the bare apex to www or vice-versa here if you ever want one canonical
+# host. Left off deliberately: Cloudflare handles apex + www on one project,
+# and the canonical tags already name the apex.
